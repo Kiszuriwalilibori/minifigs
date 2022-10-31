@@ -1,7 +1,6 @@
 {
     "name": "minifigs",
     "version": "1.0.0",
-    "homepage": "https:Kiszuriwalilibori.github.io/minifigs/",
     "private": true,
     "dependencies": {
         "@babel/plugin-proposal-private-methods": "^7.10.4",
