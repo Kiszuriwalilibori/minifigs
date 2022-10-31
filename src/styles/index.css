@@ -453,21 +453,37 @@ a {
 .select__content-box {
   display: grid;
   grid-row-gap: 60px;
+  padding-bottom: 60px;
 }
 .select__content-box > .images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 60px;
+}
+@media only screen and (max-width: 768px) {
+  .select__content-box > .images {
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+    justify-items: center;
+  }
 }
 
 .select__content-box {
   display: grid;
   grid-row-gap: 60px;
+  padding-bottom: 60px;
 }
 .select__content-box > .images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 60px;
+}
+@media only screen and (max-width: 768px) {
+  .select__content-box > .images {
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+    justify-items: center;
+  }
 }
 
 .image {
@@ -475,7 +491,7 @@ a {
   grid-row-gap: 20px;
   width: var(--image-size);
   height: var(--image-size);
-  background-color: white;
+  background-color: var(--text-background);
   border-radius: 12px;
   border: none;
   outline: none;
@@ -484,10 +500,10 @@ a {
   font-family: inherit;
   cursor: pointer;
 }
-@media (max-width: var(--mobile-max)) {
+@media only screen and (max-width: 768px) {
   .image {
     width: var(--image-size-mobile);
-    height: var(--image-size-mobile);
+    height: var(--image-size);
   }
 }
 .image--no-padding {
@@ -513,6 +529,16 @@ a {
   width: var(--image-size);
   background-color: var(--text-background);
   padding: 30px 30px;
+}
+@media only screen and (max-width: 768px) {
+  .summary__main .items {
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .summary {
+    margin: 0 auto;
+  }
 }
 
 .parts {
@@ -548,6 +574,12 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
+@media only screen and (max-width: 768px) {
+  .order {
+    flex-direction: column;
+    padding-bottom: 60px;
+  }
+}
 
 .details {
   display: grid;
@@ -559,6 +591,11 @@ a {
   row-gap: 40px;
   padding: 80px;
   color: black;
+}
+@media only screen and (max-width: 768px) {
+  .details {
+    width: 80%;
+  }
 }
 .details .form-item {
   display: flex;

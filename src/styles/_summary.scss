@@ -7,4 +7,12 @@
     width: var(--image-size);
     background-color: var(--text-background);
     padding: 30px 30px;
+    &__main .items {
+        @media only screen and (max-width: 768px) {
+            margin: 0 auto;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        margin: 0 auto;
+    }
 }
