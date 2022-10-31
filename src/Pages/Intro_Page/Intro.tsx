@@ -1,16 +1,13 @@
-import { useCallback, useEffect, useRef, useMemo } from "react";
-import { withRouter } from "react-router";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-
 import Fade from "@material-ui/core/Fade";
+
+import { useCallback, useEffect, useRef, useMemo } from "react";
+import { useHistory } from "react-router-dom";
 
 import fetchData from "js/fetchData";
 import useDispatchAction from "hooks/useDispatchAction";
 import createRedirect from "js/createRedirect";
 
 import { BasicButton, Message, LoadingIndicator } from "Components";
-import { RootStateType } from "types/types";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 
@@ -20,7 +17,7 @@ interface Props {
     errorMessage: string;
 }
 
-const Intro = (props: Props) => {
+export const Intro = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,11 +52,3 @@ const Intro = (props: Props) => {
         </Fade>
     );
 };
-
-const mapStateToProps = (state: RootStateType) => ({
-    isLoading: state.fetch.isLoading,
-    isError: state.fetch.isError,
-    errorMessage: state.fetch.errorMessage,
-});
-
-export default withRouter(connect(mapStateToProps, {})(Intro));
