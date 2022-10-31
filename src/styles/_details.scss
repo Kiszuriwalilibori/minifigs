@@ -2,15 +2,26 @@
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 50px;
+    grid-auto-rows: var(--form-item);
     column-gap: 40px;
     row-gap: 40px;
     padding: 80px;
     color: black;
+
     & .form-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        position: relative;
+        height: 100%;
+        & span {
+            background-color: var(--active-color);
+            position: absolute;
+            bottom: -22px;
+            padding: 4px;
+            left: 0;
+        }
+
         &.full-width {
             grid-column: 1/3;
         }

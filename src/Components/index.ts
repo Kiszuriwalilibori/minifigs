@@ -12,18 +12,4 @@ import Parts from "./Parts";
 import Part from "./Part";
 import Details from "./Details";
 
-export {
-    App,
-    AppProvider,
-    BasicButton,
-    Details,
-    Message,
-    LoadingIndicator,
-    Image,
-    Name,
-    Picture,
-    Summary,
-    SummaryMain,
-    Parts,
-    Part,
-};
+export { App, AppProvider, BasicButton, Details, Message, LoadingIndicator, Image, Name, Picture, Summary, SummaryMain, Parts, Part };

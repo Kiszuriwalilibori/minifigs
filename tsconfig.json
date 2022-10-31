@@ -23,7 +23,8 @@
             "components/*": ["components/*"],
             "js/*": ["js/*"],
             "pages/*": ["pages/*"],
-            "icons/*": ["icons/*"]
+            "icons/*": ["icons/*"],
+            "fixtures/*": ["fixtures"]
         }
     },
     "include": ["src"]

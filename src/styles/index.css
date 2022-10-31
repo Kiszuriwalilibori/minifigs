@@ -158,6 +158,7 @@ a {
   --image-padding: 20px;
   --image-size-mobile: 200px;
   --mobile-max: 768px;
+  --form-item: 60px;
 }
 
 @font-face {
@@ -585,7 +586,7 @@ a {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 50px;
+  grid-auto-rows: var(--form-item);
   -moz-column-gap: 40px;
        column-gap: 40px;
   row-gap: 40px;
@@ -596,6 +597,15 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
+  height: 100%;
+}
+.details .form-item span {
+  background-color: var(--active-color);
+  position: absolute;
+  bottom: -22px;
+  padding: 4px;
+  left: 0;
 }
 .details .form-item.full-width {
   grid-column: 1/3;

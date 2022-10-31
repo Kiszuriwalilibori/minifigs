@@ -6,9 +6,9 @@ import LoadingIndicator from "Components/LoadingIndicator";
 import { PartsItem } from "types";
 
 import { Part } from "Components";
-interface Props {
-    parts: { part: { part_num: string; name: string; part_img_url: string; part_url: string } }[];
-}
+// interface Props {
+//     parts: { part: { part_num: string; name: string; part_img_url: string; part_url: string } }[];
+// }
 interface Props {
     parts: PartsItem[];
 }

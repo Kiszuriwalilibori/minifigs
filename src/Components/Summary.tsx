@@ -1,12 +1,15 @@
 import { SummaryMain, Parts, BasicButton } from "Components";
 
-//interface Props {}
+import formID from "fixtures";
+
 const Summary = () => {
     return (
         <div className="summary">
             <SummaryMain />
             <Parts />
-            <BasicButton className="button uppercased">Submit</BasicButton>
+            <BasicButton className="button uppercased" type="submit" form={formID}>
+                Submit
+            </BasicButton>
         </div>
     );
 };
