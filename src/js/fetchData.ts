@@ -4,15 +4,6 @@ import draw from "js/draw";
 
 import { Minifig, RedirectType, ShowError } from "types/types";
 
-// const ids = [
-//     "e007ad9e034759e1cf1bc9128813e890",
-//     "a61a22f340551989b83385c9963aeab0",
-//     "e3f0729bd003330aa67d266a76314857",
-//     "e3f0729bd003330aa67d266a76314857",
-//     "d4b557c1d5c7e9c782d2a91bcd6fe7ed",
-//     "9333447e9684807d2a5e1d30e8892ecb",
-// ];
-
 var counter = 1;
 const fetchData = (path: string, redirect: RedirectType) => {
     let temporaryStorage: Minifig[] = [];
@@ -58,9 +49,7 @@ const fetchData = (path: string, redirect: RedirectType) => {
                 if (resp.next) {
                     nextURL = resp.next;
                     counter++;
-                    console.log(counter);
-                    //setTimeout(recursiveSingleFetch, 1000);
-                    recursiveSingleFetch();
+                    setTimeout(recursiveSingleFetch, 1000);
                 } else {
                     theEnd(temporaryStorage);
                 }

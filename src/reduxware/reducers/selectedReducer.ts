@@ -9,7 +9,6 @@ const fetchReducer = createReducer(initialState, builder => {
         })
         .addCase(setSelectedDetails, (state, action) => {
             state.selectedDetails = action.payload;
-            console.log("details are", state.selectedDetails);
         })
         .addCase(setParts, (state, action) => {
             state.withParts = action.payload;

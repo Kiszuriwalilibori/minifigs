@@ -81,7 +81,7 @@ export const Details = () => {
     const onFormSubmit = () => {
         console.log("submit");
     };
-    console.log(errors);
+
     //     //constconsole.log(errors); onErrors =()=>{console.log(formState)}
     return (
         <>
