@@ -1,20 +1,18 @@
 import { useCallback, useEffect, useRef, useMemo } from "react";
-
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import Fade from "@material-ui/core/Fade";
 
 import fetchData from "js/fetchData";
 import useDispatchAction from "hooks/useDispatchAction";
+import createRedirect from "js/createRedirect";
 
 import { BasicButton, Message, LoadingIndicator } from "Components";
 import { RootStateType } from "types/types";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import React from "react";
-import createRedirect from "js/createRedirect";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
-
-// var initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=8e442d7f1155bab4074dbff1e76bc680";
 
 interface Props {
     isLoading: boolean;
@@ -41,18 +39,20 @@ const Intro = (props: Props) => {
     }, []);
 
     return (
-        <>
-            <div className="intro">
-                <div className="intro__content-box">
-                    <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                    <BasicButton className="button uppercased" ref={refButton} onClick={() => fetchData(initialURL, redirect)}>
-                        Lets'go
-                    </BasicButton>
+        <Fade in={true} timeout={1500}>
+            <>
+                <div className="intro">
+                    <div className="intro__content-box">
+                        <h1> LEGO MINIFIGS MYSTERY BOX</h1>
+                        <BasicButton className="button uppercased" ref={refButton} onClick={() => fetchData(initialURL, redirect)}>
+                            Lets'go
+                        </BasicButton>
+                    </div>
                 </div>
-            </div>
-            {isLoading && <LoadingIndicator />}
-            {isError && <Message message={errorMessage} handleClear={handleClear} />}
-        </>
+                {isLoading && <LoadingIndicator />}
+                {isError && <Message message={errorMessage} handleClear={handleClear} />}
+            </>
+        </Fade>
     );
 };
 

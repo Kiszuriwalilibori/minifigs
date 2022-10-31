@@ -1,5 +1,6 @@
 import uuid from "react-uuid";
 import isEqual from "lodash/isEqual";
+import Fade from "@material-ui/core/Fade";
 
 import { useLazyAxios } from "use-axios-client";
 import { isEmpty } from "lodash";
@@ -44,12 +45,14 @@ const Select = (props: Props) => {
         <div className="select">
             <div className="select__content-box">
                 <h2>Choose your minifig</h2>
-                <div className="images">
-                    {minifigs &&
-                        minifigs.map(fig => {
-                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} />;
-                        })}
-                </div>
+                <Fade in={true} timeout={1500}>
+                    <div className="images">
+                        {minifigs &&
+                            minifigs.map(fig => {
+                                return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} />;
+                            })}
+                    </div>
+                </Fade>
                 <BasicButton
                     disabled={isEmpty(selected)}
                     className="button uppercased"
