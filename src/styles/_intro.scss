@@ -1,0 +1,8 @@
+.intro {
+    @extend .flexbox-column-centered;
+    @extend .full-height;
+    &__content-box {
+        display: grid;
+        grid-row-gap: 20px;
+    }
+}

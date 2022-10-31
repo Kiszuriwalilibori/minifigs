@@ -1,0 +1,51 @@
+@import "reset";
+@import "colors";
+@import "sizes";
+@import "fonts";
+@import "mixins";
+@import "utils";
+@import "button";
+@import "intro";
+@import "error";
+@import "loadingIndicator";
+@import "select";
+@import "select";
+@import "image";
+@import "summary";
+@import "parts";
+@import "order";
+@import "details";
+
+h1 {
+    @extend .header;
+    font-size: 48px;
+    &.black {
+        @extend .header--black;
+    }
+    &.fromLeft {
+        text-align: initial;
+    }
+}
+
+h2 {
+    @extend .header;
+    font-size: 24px;
+    &.black {
+        @extend .header--black;
+    }
+    &.fromLeft {
+        text-align: initial;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--active-color);
+}
+#root {
+    overflow-y: auto;
+
+    background-color: var(--background-normal-color);
+
+    @extend .oswald;
+}

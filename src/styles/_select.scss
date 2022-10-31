@@ -1,0 +1,14 @@
+.select {
+    @extend .flexbox-column-centered;
+    @extend .full-height;
+    &__content-box {
+        display: grid;
+        grid-row-gap: 60px;
+        & > .images {
+            // todo będzie trza przerobić na flexa dla mobile?
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 60px;
+        }
+    }
+}

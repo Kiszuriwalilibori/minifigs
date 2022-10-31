@@ -1,0 +1,44 @@
+@use "./utils";
+
+$btn-height: 40px;
+
+.button {
+    @extend .flexbox-row-centered;
+    @extend .self-centered;
+    border: none;
+    outline: none;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    text-align: inherit;
+    height: $btn-height;
+    border-radius: $btn-height;
+    min-width: 200px;
+    font-family: inherit;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--button-hover-color);
+    }
+    &:disabled {
+        cursor: default;
+        background-color: var(--button-disabled-color);
+        opacity: 0.7;
+    }
+}
+
+.button--alarm {
+    @extend .flexbox-row-centered;
+    height: $btn-height;
+    width: $btn-height;
+    border-radius: $btn-height;
+    background-color: inherit;
+    border: 2px solid var(--alarm-color);
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--button-hover-color);
+    }
+    &:disabled {
+        cursor: default;
+        background-color: var(--button-disabled-color);
+    }
+}
