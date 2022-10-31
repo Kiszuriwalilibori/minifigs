@@ -5,7 +5,7 @@ interface Props {
 }
 const Part = (props: Props) => {
     const { data } = props;
-    console.log("data from part", data);
+
     return (
         <div className="part">
             <img className="part__image" src={data.part.part_img_url} alt={"Picture of " + data.part.name}></img>

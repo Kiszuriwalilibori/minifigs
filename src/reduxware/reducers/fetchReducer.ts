@@ -23,7 +23,6 @@ const fetchReducer = createReducer(initialState, builder => {
             state.isError = false;
             state.errorMessage = "";
             state.minifigs = action.payload;
-            console.log("state minifigs", state.minifigs);
         });
 });
 

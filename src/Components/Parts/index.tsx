@@ -2,11 +2,10 @@ import { Parts } from "./Parts";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Minifig, RootStateType } from "types";
-import withQueryClientProviderHOC from "HOCs/withQueryClientProviderHOC";
+import { RootStateType } from "types";
 
 const mapStateToProps = (state: RootStateType) => ({
-    setNumber: (state.selected.selectedMinifig as Minifig).set_num,
+    parts: state.selected.withParts,
 });
 
-export default withRouter(connect(mapStateToProps, {})(withQueryClientProviderHOC(Parts)));
+export default withRouter(connect(mapStateToProps, {})(Parts));

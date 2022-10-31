@@ -24,14 +24,20 @@ type RedirectType = {
 };
 type SelectedDetails = any;
 
-interface PartsItem {
-    part: {
-        part_num: string;
-        name: string;
-        part_img_url: string;
-        part_url: string;
-    };
+interface Atom {
+    part_num: string;
+    name: string;
+    part_img_url: string;
+    part_url: string;
 }
+interface PartsItem {
+    part: Atom;
+}
+
+interface Results {
+    results: { part: Atom }[];
+}
+
 export type {
     RootStateType,
     PathKeys,
@@ -42,4 +48,6 @@ export type {
     SelectedDetails,
     SelectedMinifig,
     PartsItem,
+    Results,
+    Atom,
 };
