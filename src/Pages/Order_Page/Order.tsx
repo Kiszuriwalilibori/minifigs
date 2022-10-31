@@ -4,7 +4,6 @@ const Order = () => {
     return (
         <div className="order">
             <Details />
-
             <Summary />
         </div>
     );

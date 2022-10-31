@@ -1,5 +1,7 @@
 import { RootStateType } from "Components/AppProvider";
 
+import { SendOrder } from "reduxware/thunks/sendOrder";
+
 type PathKeys = "intro" | "order" | "select";
 
 interface Minifig {
@@ -38,16 +40,9 @@ interface Results {
     results: { part: Atom }[];
 }
 
-export type {
-    RootStateType,
-    PathKeys,
-    Minifig,
-    ShowError,
-    HistoryCall,
-    RedirectType,
-    SelectedDetails,
-    SelectedMinifig,
-    PartsItem,
-    Results,
-    Atom,
-};
+interface SendOrderArgs {
+    redirect: RedirectType;
+    data: any;
+}
+
+export type { RootStateType, PathKeys, Minifig, ShowError, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };

@@ -1,6 +1,17 @@
 import { RegisterOptions, useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 import formID from "fixtures";
+import createRedirect from "js/createRedirect";
+
+import { SendOrder } from "types";
+import { useMemo } from "react";
+
+const data = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+};
 
 type Messages = { [key in keyof RegisterOptions]?: string };
 
@@ -40,7 +51,7 @@ const crits = {
     },
     address: {
         required: true,
-        pattern: /^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$/,
+        pattern: /[A-Za-z0-9'\.\-\s\,]/,
     },
     city: {
         required: true,
@@ -69,17 +80,26 @@ const validators: Validators = {
     zip: { ...crits.zip },
 };
 
-export const Details = () => {
+interface Props {
+    sendOrder: SendOrder;
+}
+export const Details = (props: Props) => {
+    const { sendOrder } = props;
+
+    const history = useHistory();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const redirect = useMemo(createRedirect(history), []);
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    //     //const handleError = () => {};
-
     const onFormSubmit = () => {
         console.log("submit");
+        sendOrder(redirect, data);
     };
 
     //     //constconsole.log(errors); onErrors =()=>{console.log(formState)}
@@ -140,7 +160,7 @@ export const Details = () => {
 
                 <div className="form-item full-width">
                     <label>Phone Number</label>
-                    <input placeholder="Mobile or regular Polish phone" type="text" {...register("phone", validators.phone)} />
+                    <input placeholder="Mobile or regular Polish phone with country code like 048 669086566" type="text" {...register("phone", validators.phone)} />
                     {errors.phone && errors.phone.type === "required" && (
                         <span>
                             {messages.required}
