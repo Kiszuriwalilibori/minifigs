@@ -5,13 +5,7 @@ import formID from "fixtures";
 import createRedirect from "js/createRedirect";
 
 import { SendOrder } from "types";
-import { useMemo } from "react";
-
-const data = {
-    title: "foo",
-    body: "bar",
-    userId: 1,
-};
+import { useMemo, useRef } from "react";
 
 type Messages = { [key in keyof RegisterOptions]?: string };
 
@@ -82,12 +76,12 @@ const validators: Validators = {
 
 interface Props {
     sendOrder: SendOrder;
+    setNumber: string;
 }
 export const Details = (props: Props) => {
-    const { sendOrder } = props;
-
+    const { sendOrder, setNumber } = props;
     const history = useHistory();
-
+    const refForm = useRef<HTMLFormElement>(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect = useMemo(createRedirect(history), []);
 
@@ -98,14 +92,14 @@ export const Details = (props: Props) => {
     } = useForm();
 
     const onFormSubmit = () => {
-        console.log("submit");
-        sendOrder(redirect, data);
+        const pack = new FormData(refForm.current as HTMLFormElement);
+        pack.append("setNumber", setNumber);
+        pack && sendOrder(redirect, pack);
     };
 
-    //     //constconsole.log(errors); onErrors =()=>{console.log(formState)}
     return (
         <>
-            <form className="details" id={formID} onSubmit={handleSubmit(onFormSubmit)}>
+            <form className="details" id={formID} onSubmit={handleSubmit(onFormSubmit)} ref={refForm}>
                 <h2 className="fromLeft">Shipping details</h2>
                 <div className="foo" id="foo"></div>
 
