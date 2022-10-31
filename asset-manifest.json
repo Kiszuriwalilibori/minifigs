@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Kiszuriwalilibori.github.io/minifigs/static/css/main.4795197f.css",
-    "main.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.a37fe78b.js",
-    "static/js/243.5477f640.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/243.5477f640.chunk.js",
-    "static/js/34.e7ce64b8.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/34.e7ce64b8.chunk.js",
-    "static/js/765.f88154dc.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/765.f88154dc.chunk.js",
-    "static/media/Kanit-BoldItalic.ttf": "/Kiszuriwalilibori.github.io/minifigs/static/media/Kanit-BoldItalic.093855ecc5cefd274edf.ttf",
-    "index.html": "/Kiszuriwalilibori.github.io/minifigs/index.html",
-    "main.4795197f.css.map": "/Kiszuriwalilibori.github.io/minifigs/static/css/main.4795197f.css.map",
-    "main.a37fe78b.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.a37fe78b.js.map",
-    "243.5477f640.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/243.5477f640.chunk.js.map",
-    "34.e7ce64b8.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/34.e7ce64b8.chunk.js.map",
-    "765.f88154dc.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/765.f88154dc.chunk.js.map"
+    "main.css": "/minifigs/static/css/main.8083ce18.css",
+    "main.js": "/minifigs/static/js/main.b0236fcb.js",
+    "static/js/243.5477f640.chunk.js": "/minifigs/static/js/243.5477f640.chunk.js",
+    "static/js/34.e7ce64b8.chunk.js": "/minifigs/static/js/34.e7ce64b8.chunk.js",
+    "static/js/765.f88154dc.chunk.js": "/minifigs/static/js/765.f88154dc.chunk.js",
+    "static/media/Kanit-BoldItalic.ttf": "/minifigs/static/media/Kanit-BoldItalic.093855ecc5cefd274edf.ttf",
+    "index.html": "/minifigs/index.html",
+    "main.8083ce18.css.map": "/minifigs/static/css/main.8083ce18.css.map",
+    "main.b0236fcb.js.map": "/minifigs/static/js/main.b0236fcb.js.map",
+    "243.5477f640.chunk.js.map": "/minifigs/static/js/243.5477f640.chunk.js.map",
+    "34.e7ce64b8.chunk.js.map": "/minifigs/static/js/34.e7ce64b8.chunk.js.map",
+    "765.f88154dc.chunk.js.map": "/minifigs/static/js/765.f88154dc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4795197f.css",
-    "static/js/main.a37fe78b.js"
+    "static/css/main.8083ce18.css",
+    "static/js/main.b0236fcb.js"
   ]
 }
