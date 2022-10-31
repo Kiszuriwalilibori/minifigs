@@ -3,11 +3,8 @@
 @font-face {
     font-family: "Gordon";
     src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot");
-    src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot?#iefix") format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff2") format("woff2"),
-        url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff") format("woff"),
-        url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.ttf") format("truetype"),
-        url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.svg#Gordon") format("svg");
+    src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff") format("woff"),
+        url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.svg#Gordon") format("svg");
 }
 
 .gordon {
@@ -16,15 +13,4 @@
 
 .oswald {
     font-family: "Oswald", sans-serif;
-}
-
-@font-face {
-    font-family: "kanit";
-    src: url("./kanit/Kanit-BoldItalic.ttf") format("ttf");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-.kanit {
-    font-family: "kanit", sans-serif;
 }

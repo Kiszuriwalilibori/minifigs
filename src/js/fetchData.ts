@@ -4,7 +4,6 @@ import draw from "js/draw";
 
 import { Minifig, RedirectType, ShowError } from "types/types";
 
-var counter = 1;
 const fetchData = (path: string, redirect: RedirectType) => {
     let temporaryStorage: Minifig[] = [];
     var nextURL: string;
@@ -48,7 +47,6 @@ const fetchData = (path: string, redirect: RedirectType) => {
 
                 if (resp.next) {
                     nextURL = resp.next;
-                    counter++;
                     setTimeout(recursiveSingleFetch, 1000);
                 } else {
                     theEnd(temporaryStorage);
@@ -62,7 +60,3 @@ const fetchData = (path: string, redirect: RedirectType) => {
 };
 
 export default fetchData;
-
-/**
- * todo React-hook-form
- */

@@ -63,15 +63,3 @@ const mapStateToProps = (state: RootStateType) => ({
 });
 
 export default withRouter(connect(mapStateToProps, {})(Intro));
-
-/**
- * todo
- */
-
-// https://rebrickable.com/api/v3/lego/minifigs/fig-006052/parts/?key=8e442d7f1155bab4074dbff1e76bc680
-
-// REACT_APP_MINIFIGS_KEY =e007ad9e034759e1cf1bc9128813e890
-
-// 8e442d7f1155bab4074dbff1e76bc680
-
-// e007ad9e034759e1cf1bc9128813e890

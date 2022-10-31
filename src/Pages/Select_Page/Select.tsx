@@ -1,8 +1,8 @@
 import uuid from "react-uuid";
-import { useLazyAxios } from "use-axios-client";
-import { isEmpty } from "lodash";
 import isEqual from "lodash/isEqual";
 
+import { useLazyAxios } from "use-axios-client";
+import { isEmpty } from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -21,11 +21,7 @@ const Select = (props: Props) => {
     const history = useHistory();
     const [selected, setSelected] = useState<SelectedMinifig>({});
 
-    const URL =
-        "https://rebrickable.com/api/v3/lego/minifigs/" +
-        (selected as Minifig).set_num +
-        "/parts/?key=" +
-        "8e442d7f1155bab4074dbff1e76bc680";
+    const URL = "https://rebrickable.com/api/v3/lego/minifigs/" + (selected as Minifig).set_num + "/parts/?key=" + "8e442d7f1155bab4074dbff1e76bc680";
 
     const [getData, { data, error, loading: isLoading }] = useLazyAxios({
         url: URL,
@@ -51,16 +47,7 @@ const Select = (props: Props) => {
                 <div className="images">
                     {minifigs &&
                         minifigs.map(fig => {
-                            return (
-                                fig && (
-                                    <Image
-                                        key={uuid()}
-                                        minifig={fig}
-                                        clickHandler={selectMinifig}
-                                        isSelected={isEqual(fig, selected)}
-                                    />
-                                )
-                            );
+                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} />;
                         })}
                 </div>
                 <BasicButton
@@ -70,7 +57,6 @@ const Select = (props: Props) => {
                         e.stopPropagation();
                         setSelectedMinifig(selected);
                         getData();
-                        // history.push(Paths.order);
                     }}
                 >
                     Proceed to shipment

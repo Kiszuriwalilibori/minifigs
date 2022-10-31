@@ -11,5 +11,6 @@ import SummaryMain from "./SummaryMain";
 import Parts from "./Parts";
 import Part from "./Part";
 import Details from "./Details";
+import NoParts from "./NoParts";
 
-export { App, AppProvider, BasicButton, Details, Message, LoadingIndicator, Image, Name, Picture, Summary, SummaryMain, Parts, Part };
+export { App, AppProvider, BasicButton, Details, Message, LoadingIndicator, Image, Name, NoParts, Picture, Summary, SummaryMain, Parts, Part };

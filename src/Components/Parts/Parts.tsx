@@ -1,14 +1,9 @@
 import uuid from "react-uuid";
-
 import isEmpty from "lodash/isEmpty";
 
-import LoadingIndicator from "Components/LoadingIndicator";
+import { NoParts, Part } from "Components";
 import { PartsItem } from "types";
 
-import { Part } from "Components";
-// interface Props {
-//     parts: { part: { part_num: string; name: string; part_img_url: string; part_url: string } }[];
-// }
 interface Props {
     parts: PartsItem[];
 }
@@ -22,10 +17,6 @@ export const Parts = (props: Props) => {
             })}
         </div>
     ) : (
-        <div>It seems that Dementors sucked all the parts &#128553;</div>
+        <NoParts />
     );
 };
-
-/**
- * todo rozważyć przypadek kiedy wyslemy puste z selecta - powinien byc brak części
- */
