@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Kiszuriwalilibori.github.io/minifigs/static/css/main.4795197f.css",
-    "main.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.27d641c0.js",
+    "main.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.a37fe78b.js",
     "static/js/243.5477f640.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/243.5477f640.chunk.js",
     "static/js/34.e7ce64b8.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/34.e7ce64b8.chunk.js",
     "static/js/765.f88154dc.chunk.js": "/Kiszuriwalilibori.github.io/minifigs/static/js/765.f88154dc.chunk.js",
     "static/media/Kanit-BoldItalic.ttf": "/Kiszuriwalilibori.github.io/minifigs/static/media/Kanit-BoldItalic.093855ecc5cefd274edf.ttf",
     "index.html": "/Kiszuriwalilibori.github.io/minifigs/index.html",
     "main.4795197f.css.map": "/Kiszuriwalilibori.github.io/minifigs/static/css/main.4795197f.css.map",
-    "main.27d641c0.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.27d641c0.js.map",
+    "main.a37fe78b.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/main.a37fe78b.js.map",
     "243.5477f640.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/243.5477f640.chunk.js.map",
     "34.e7ce64b8.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/34.e7ce64b8.chunk.js.map",
     "765.f88154dc.chunk.js.map": "/Kiszuriwalilibori.github.io/minifigs/static/js/765.f88154dc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4795197f.css",
-    "static/js/main.27d641c0.js"
+    "static/js/main.a37fe78b.js"
   ]
 }
