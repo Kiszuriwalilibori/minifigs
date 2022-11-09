@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Details } from "./Details";
+import { OrderDetails } from "./Order_Details";
 import { sendOrder } from "reduxware/thunks/sendOrder";
 
 import { Minifig, RedirectType, RootStateType } from "types";
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
     sendOrder: (redirect: RedirectType, data: FormData) => dispatch(sendOrder(redirect, data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderDetails);

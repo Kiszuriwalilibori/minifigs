@@ -1,4 +1,4 @@
-import { SummaryMain } from "./SummaryMain";
+import { Summary_Header } from "./Summary_Header";
 
 import { connect } from "react-redux";
 
@@ -8,4 +8,4 @@ const mapStateToProps = (state: RootStateType) => ({
     selectedMinifig: state.selected.selectedMinifig,
 });
 
-export default connect(mapStateToProps, {})(SummaryMain);
+export default connect(mapStateToProps, {})(Summary_Header);

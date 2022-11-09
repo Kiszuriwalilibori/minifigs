@@ -30,7 +30,7 @@ const fetchData = (path: string, redirect: RedirectType) => {
             happyEnd();
         }
     }
-
+    var counter = 0;
     async function recursiveSingleFetch() {
         var fullPath = nextURL || path;
         const fetchResult = await fetch(fullPath).catch(error => {
@@ -48,6 +48,8 @@ const fetchData = (path: string, redirect: RedirectType) => {
                 if (resp.next) {
                     nextURL = resp.next;
                     setTimeout(recursiveSingleFetch, 1000);
+                    counter++;
+                    console.log(counter);
                 } else {
                     theEnd(temporaryStorage);
                 }

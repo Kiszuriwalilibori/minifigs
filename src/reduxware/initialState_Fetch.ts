@@ -6,4 +6,6 @@ export const initialState = {
     isLoading: false,
     isFetched: false,
     minifigs: [] as Minifig[],
+    messageMessage: "",
+    isMessage: false,
 };

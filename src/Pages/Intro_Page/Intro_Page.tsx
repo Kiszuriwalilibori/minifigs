@@ -7,7 +7,7 @@ import fetchData from "js/fetchData";
 import useDispatchAction from "hooks/useDispatchAction";
 import createRedirect from "js/createRedirect";
 
-import { BasicButton, Message, LoadingIndicator } from "Components";
+import { BasicButton, Error, LoadingIndicator } from "Components";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 
@@ -17,7 +17,7 @@ interface Props {
     errorMessage: string;
 }
 
-export const Intro = (props: Props) => {
+export const Intro_Page = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,7 +47,7 @@ export const Intro = (props: Props) => {
                     </div>
                 </div>
                 {isLoading && <LoadingIndicator />}
-                {isError && <Message message={errorMessage} handleClear={handleClear} />}
+                {isError && <Error message={errorMessage} handleClear={handleClear} />}
             </>
         </Fade>
     );

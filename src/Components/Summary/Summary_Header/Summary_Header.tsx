@@ -4,7 +4,7 @@ import { Picture, Name } from "Components";
 interface Props {
     selectedMinifig: SelectedMinifig;
 }
-export const SummaryMain = (props: Props) => {
+export const Summary_Header = (props: Props) => {
     const { selectedMinifig } = props;
 
     const { name, num_parts: num, set_img_url: url } = selectedMinifig as Minifig;

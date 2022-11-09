@@ -19,6 +19,11 @@ interface ShowError {
     errorMessage: string;
 }
 
+interface ShowMessage {
+    isMessage: boolean;
+    messageMessage: string;
+}
+
 type HistoryCall = () => void;
 
 type RedirectType = {
@@ -45,4 +50,4 @@ interface SendOrderArgs {
     data: any;
 }
 
-export type { RootStateType, PathKeys, Minifig, ShowError, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };
+export type { RootStateType, PathKeys, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };

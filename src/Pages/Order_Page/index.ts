@@ -1,5 +1,12 @@
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { RootStateType } from "types";
 
-import Order from "./Order";
+import Order_Page from "./Order_Page";
 
-export default withRouter(Order);
+const mapStateToProps = (state: RootStateType) => ({
+    message: state.fetch.messageMessage,
+    isMessage: state.fetch.isMessage,
+});
+
+export default withRouter(connect(mapStateToProps, {})(Order_Page));

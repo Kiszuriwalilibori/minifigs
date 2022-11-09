@@ -14,25 +14,18 @@ $hide-position: -45px;
     right: 0;
     & > .message {
         position: relative;
-        border: 2px solid var(--alarm-color);
+        border: 2px solid var(--button-color);
         width: 300px;
         min-width: 300px;
         padding: 10px;
         background-color: white;
-        & > .message__hide-message {
-            position: absolute;
-            top: $hide-position;
-            right: $hide-position;
-            & svg {
-                width: var(--svg-larger);
-                fill: var(--alarm-color);
-            }
-        }
+
         & > .message__general-message {
             text-align: center;
         }
     }
 }
+
 .error:before {
     content: "";
     display: block;

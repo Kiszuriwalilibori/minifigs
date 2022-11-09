@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import { initialState } from "../initialState_Fetch";
-import { showError, clearError, startLoading, completeLoading } from "../actionCreators";
+import { showError, clearError, startLoading, completeLoading, showMessage, hideMessage } from "../actionCreators";
 
 const fetchReducer = createReducer(initialState, builder => {
     builder
@@ -23,6 +23,15 @@ const fetchReducer = createReducer(initialState, builder => {
             state.isError = false;
             state.errorMessage = "";
             state.minifigs = action.payload;
+        })
+        .addCase(showMessage, (state, action) => {
+            const { isMessage, messageMessage } = action.payload;
+            state.isMessage = true;
+            if (action.payload) state.messageMessage = messageMessage;
+        })
+        .addCase(hideMessage, (state, action) => {
+            state.isMessage = false;
+            state.messageMessage = "";
         });
 });
 

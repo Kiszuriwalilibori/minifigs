@@ -78,7 +78,7 @@ interface Props {
     sendOrder: SendOrder;
     setNumber: string;
 }
-export const Details = (props: Props) => {
+export const OrderDetails = (props: Props) => {
     const { sendOrder, setNumber } = props;
     const history = useHistory();
     const refForm = useRef<HTMLFormElement>(null);

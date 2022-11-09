@@ -14,7 +14,6 @@ const Part = (props: Props) => {
                 <a className="part__item part__code" href={data.part.part_img_url} target="blank">
                     {data.part.part_num}
                 </a>
-                {/* <div className="part__item part__code">{data.part.part_num}</div> */}
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
 
-import { showError } from "../actionCreators";
+import { showError, showMessage, hideMessage } from "../actionCreators";
 import { RedirectType, RootStateType } from "types";
 
 const path = "https://jsonplaceholder.typicode.com/posts";
@@ -19,8 +19,10 @@ export const sendOrder = (redirect: RedirectType, data: any): ThunkAction<void, 
             .then(json => {
                 if (json) {
                     try {
-                        console.log("json from sendOrder", json);
-                        redirect.intro();
+                        dispatch(showMessage({ isMessage: true, messageMessage: "Your order has been successfully proceeded" }));
+                        setTimeout(redirect.intro, 3000);
+                        setTimeout(hideMessage, 3000);
+                        //redirect.intro();
                     } catch (error) {
                         dispatch(showError({ isError: true, errorMessage: "Error occured during order placing" }));
                     }
