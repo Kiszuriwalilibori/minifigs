@@ -105,7 +105,7 @@ export const Details = (props: Props) => {
 
                 {/**Name */}
 
-                <div className="form-item">
+                <div className="form-item extendable">
                     <label>Name</label>
                     <input type="text" {...register("firstName", validators.firstName)} />
                     {errors.firstName && errors.firstName.type === "required" && <span>{messages.required}</span>}
@@ -126,7 +126,7 @@ export const Details = (props: Props) => {
 
                 {/**Surname */}
 
-                <div className="form-item">
+                <div className="form-item extendable">
                     <label>Surname</label>
                     <input type="text" {...register("surName", validators.surName)} />
                     {errors.surName && errors.surName.type === "required" && (
