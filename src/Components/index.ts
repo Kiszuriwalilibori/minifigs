@@ -13,5 +13,6 @@ import Part from "./Part";
 import OrderDetails from "./Order_Details";
 import NoParts from "./NoParts";
 import Message from "./Message";
+import Teaser from "./Teaser";
 
-export { App, AppProvider, BasicButton, OrderDetails, Error, Message, LoadingIndicator, Image, Name, NoParts, Picture, Summary, Summary_Header as SummaryMain, Parts, Part };
+export { App, Teaser, AppProvider, BasicButton, OrderDetails, Error, Message, LoadingIndicator, Image, Name, NoParts, Picture, Summary, Summary_Header as SummaryMain, Parts, Part };

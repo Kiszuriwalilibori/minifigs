@@ -1,6 +1,6 @@
 import { store } from "Components/AppProvider";
-import filterMinifigs from "js/filterMinifigs";
-import draw from "js/draw";
+import filterMinifigs from "functions/filterMinifigs";
+import draw from "functions/draw";
 
 import { Minifig, RedirectType, ShowError } from "types/types";
 
@@ -30,7 +30,7 @@ const fetchData = (path: string, redirect: RedirectType) => {
             happyEnd();
         }
     }
-    var counter = 0;
+    //var counter = 0;
     async function recursiveSingleFetch() {
         var fullPath = nextURL || path;
         const fetchResult = await fetch(fullPath).catch(error => {
@@ -43,13 +43,14 @@ const fetchData = (path: string, redirect: RedirectType) => {
                 const figsHarryPotter = filterMinifigs(resp.results, "Harry Potter");
                 if (figsHarryPotter.length) {
                     temporaryStorage = temporaryStorage.concat(figsHarryPotter);
+                    store.dispatch({ type: "TEASERS_UPDATE", payload: figsHarryPotter });
                 }
 
                 if (resp.next) {
                     nextURL = resp.next;
                     setTimeout(recursiveSingleFetch, 1000);
-                    counter++;
-                    console.log(counter);
+                    //counter++;
+                    store.dispatch({ type: "COUNTER_UPDATE" });
                 } else {
                     theEnd(temporaryStorage);
                 }

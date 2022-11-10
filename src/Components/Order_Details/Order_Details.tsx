@@ -2,9 +2,9 @@ import { RegisterOptions, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import formID from "fixtures";
-import createRedirect from "js/createRedirect";
+import createRedirect from "functions/createRedirect";
 
-import { SendOrder } from "types";
+import { SendOrder, RedirectType } from "types";
 import { useMemo, useRef } from "react";
 
 type Messages = { [key in keyof RegisterOptions]?: string };
@@ -83,7 +83,7 @@ export const OrderDetails = (props: Props) => {
     const history = useHistory();
     const refForm = useRef<HTMLFormElement>(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const redirect = useMemo(createRedirect(history), []);
+    const redirect: RedirectType = useMemo(createRedirect(history), []);
 
     const {
         register,

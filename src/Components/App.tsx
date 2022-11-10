@@ -3,7 +3,7 @@ import { lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Paths from "../Routing/Paths";
-import Awaiting from "js/awaiting";
+import Awaiting from "functions/awaiting";
 import IntroPage from "Pages/Intro_Page";
 
 const Select_Page = lazy(() => import("Pages/Select_Page"));

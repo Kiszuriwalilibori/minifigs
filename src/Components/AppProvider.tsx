@@ -8,10 +8,12 @@ import thunk from "redux-thunk";
 
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import selectedReducer from "reduxware/reducers/selectedReducer";
+import teasersReducer from "reduxware/reducers/teaserReducer";
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
     selected: selectedReducer,
+    teasers: teasersReducer,
 });
 
 export const store = configureStore({

@@ -3,11 +3,10 @@ import Fade from "@material-ui/core/Fade";
 import { useCallback, useEffect, useRef, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 
-import fetchData from "js/fetchData";
+import fetchData from "functions/fetchData";
 import useDispatchAction from "hooks/useDispatchAction";
-import createRedirect from "js/createRedirect";
-
-import { BasicButton, Error, LoadingIndicator } from "Components";
+import createRedirect from "functions/createRedirect";
+import { BasicButton, Error, LoadingIndicator, Teaser } from "Components";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 
@@ -45,6 +44,7 @@ export const Intro_Page = (props: Props) => {
                             Lets'go
                         </BasicButton>
                     </div>
+                    <Teaser />
                 </div>
                 {isLoading && <LoadingIndicator />}
                 {isError && <Error message={errorMessage} handleClear={handleClear} />}
