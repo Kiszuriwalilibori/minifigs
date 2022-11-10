@@ -8,11 +8,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
-import Paths from "Routing/Paths";
 
 import { Minifig, Results, SelectedMinifig } from "types/types";
-import { Image } from "Components";
-import { BasicButton } from "Components";
+import { Image } from "components";
+import { BasicButton } from "components";
+import { Paths } from "routes/paths";
 
 interface Props {
     minifigs: Minifig[];

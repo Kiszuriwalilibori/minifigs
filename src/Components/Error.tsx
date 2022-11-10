@@ -1,4 +1,4 @@
-import { BasicButton } from "Components";
+import { BasicButton } from "components";
 
 interface Props {
     message: string;

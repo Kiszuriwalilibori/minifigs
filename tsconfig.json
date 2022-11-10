@@ -24,7 +24,8 @@
             "js/*": ["js/*"],
             "pages/*": ["pages/*"],
             "icons/*": ["icons/*"],
-            "fixtures/*": ["fixtures"]
+            "fixtures/*": ["fixtures"],
+            "routing/*": ["routing"]
         }
     },
     "include": ["src"]

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import fetchData from "functions/fetchData";
 import useDispatchAction from "hooks/useDispatchAction";
 import createRedirect from "functions/createRedirect";
-import { BasicButton, Error, LoadingIndicator, Teaser } from "Components";
+import { BasicButton, Error, LoadingIndicator, Teaser } from "components";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 

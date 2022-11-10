@@ -3,6 +3,11 @@
     grid-row-gap: 20px;
     width: var(--image-size);
     height: var(--image-size);
+    @include maxwidth768px {
+        width: var(--image-size-mobile);
+        height: var(--image-size);
+    }
+
     background-color: var(--text-background);
     border-radius: 12px;
     border: none;
@@ -11,10 +16,6 @@
     padding: 30px var(--image-padding);
     font-family: inherit;
     cursor: pointer;
-    @media only screen and (max-width: 768px) {
-        width: var(--image-size-mobile);
-        height: var(--image-size);
-    }
 
     &--no-padding {
         padding: 30px 0;

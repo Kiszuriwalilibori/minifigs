@@ -2,12 +2,12 @@ import { lazy } from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import Paths from "../Routing/Paths";
+import { Paths } from "../routes/paths";
 import Awaiting from "functions/awaiting";
-import IntroPage from "Pages/Intro_Page";
+import IntroPage from "pages/Intro_Page";
 
-const Select_Page = lazy(() => import("Pages/Select_Page"));
-const Order_Page = lazy(() => import("Pages/Order_Page"));
+const Select_Page = lazy(() => import("pages/Select_Page"));
+const Order_Page = lazy(() => import("pages/Order_Page"));
 
 function App() {
     return (

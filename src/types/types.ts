@@ -1,4 +1,4 @@
-import { RootStateType } from "Components/AppProvider";
+import { RootStateType } from "components/AppProvider";
 
 import { SendOrder } from "reduxware/thunks/sendOrder";
 

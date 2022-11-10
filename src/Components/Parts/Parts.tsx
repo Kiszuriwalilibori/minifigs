@@ -1,7 +1,7 @@
 import uuid from "react-uuid";
 import isEmpty from "lodash/isEmpty";
 
-import { NoParts, Part } from "Components";
+import { NoParts, Part } from "components";
 import { PartsItem } from "types";
 
 interface Props {

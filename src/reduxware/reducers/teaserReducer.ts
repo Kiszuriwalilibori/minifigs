@@ -5,14 +5,12 @@ import { updateTeasers, updateCounter } from "../actionCreators";
 const teasersReducer = createReducer(initialState, builder => {
     builder.addCase(updateTeasers, (state, action) => {
         if (action.payload) {
-            const minifigs = state.minifigs;
-            minifigs.push(action.payload);
-            state.minifigs = minifigs;
+            //state.minifigs = action.payload;
+            state.minifigs.push(action.payload);
         }
     });
     builder.addCase(updateCounter, state => {
         state.counter++;
-        console.log(state.counter);
     });
 });
 

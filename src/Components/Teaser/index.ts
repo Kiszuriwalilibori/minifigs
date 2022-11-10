@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 
 import { Teaser } from "./Teaser";
 
-import { Minifig, RootStateType } from "types";
+import { RootStateType } from "types";
 
 const mapStateToProps = (state: RootStateType) => ({
-    teaser: state.teasers.minifigs.at(-1)!,
+    teasers: state.teasers.minifigs,
     counter: state.teasers.counter,
 });
 

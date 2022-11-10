@@ -1,5 +1,5 @@
 import { Fade } from "@material-ui/core";
-import { Summary, OrderDetails, Message } from "Components";
+import { Summary, OrderDetails, Message } from "components";
 
 interface Props {
     message: string;

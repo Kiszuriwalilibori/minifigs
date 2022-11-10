@@ -1,0 +1,18 @@
+.teaser {
+    width: 200px;
+    margin-top: 60px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &__counter {
+        color: white;
+        padding: 20px;
+    }
+    & img {
+        width: 100%;
+        aspect-ratio: 1;
+    }
+}

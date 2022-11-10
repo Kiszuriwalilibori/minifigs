@@ -1,5 +1,5 @@
 import { Minifig } from "types/types";
-import { BasicButton, Name, Picture } from "Components";
+import { BasicButton, Name, Picture } from "components";
 
 interface Props {
     minifig: Minifig;

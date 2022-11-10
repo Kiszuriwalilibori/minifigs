@@ -41,7 +41,6 @@ The following tools and resources has been used while developing Google Books
 ### Browser limitations
 
 -   No suppport provided for Opera Mini nor IE
--
 
 ### Version
 

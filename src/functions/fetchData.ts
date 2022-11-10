@@ -1,4 +1,4 @@
-import { store } from "Components/AppProvider";
+import { store } from "components/AppProvider";
 import filterMinifigs from "functions/filterMinifigs";
 import draw from "functions/draw";
 
@@ -43,7 +43,11 @@ const fetchData = (path: string, redirect: RedirectType) => {
                 const figsHarryPotter = filterMinifigs(resp.results, "Harry Potter");
                 if (figsHarryPotter.length) {
                     temporaryStorage = temporaryStorage.concat(figsHarryPotter);
-                    store.dispatch({ type: "TEASERS_UPDATE", payload: figsHarryPotter });
+                    figsHarryPotter.forEach(fig => {
+                        setTimeout(() => {
+                            store.dispatch({ type: "TEASERS_UPDATE", payload: fig });
+                        }, 1000);
+                    });
                 }
 
                 if (resp.next) {

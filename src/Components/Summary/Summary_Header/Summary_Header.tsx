@@ -1,5 +1,5 @@
 import { Minifig, SelectedMinifig } from "types/index";
-import { Picture, Name } from "Components";
+import { Picture, Name } from "components";
 
 interface Props {
     selectedMinifig: SelectedMinifig;

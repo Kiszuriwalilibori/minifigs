@@ -6,6 +6,8 @@ import { RedirectType, RootStateType } from "types";
 
 const path = "https://jsonplaceholder.typicode.com/posts";
 
+const timeout = 5000;
+
 export const sendOrder = (redirect: RedirectType, data: any): ThunkAction<void, RootStateType, unknown, AnyAction> => {
     return async (dispatch, getState) => {
         fetch(path, {
@@ -20,9 +22,8 @@ export const sendOrder = (redirect: RedirectType, data: any): ThunkAction<void, 
                 if (json) {
                     try {
                         dispatch(showMessage({ isMessage: true, messageMessage: "Your order has been successfully proceeded" }));
-                        setTimeout(redirect.intro, 3000);
-                        setTimeout(hideMessage, 3000);
-                        //redirect.intro();
+                        setTimeout(redirect.intro, timeout);
+                        setTimeout(hideMessage, timeout);
                     } catch (error) {
                         dispatch(showError({ isError: true, errorMessage: "Error occured during order placing" }));
                     }

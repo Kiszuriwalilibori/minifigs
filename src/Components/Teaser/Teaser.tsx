@@ -1,18 +1,22 @@
 import { Minifig } from "types";
 
-import { Picture } from "Components";
+import { Picture } from "components";
 
 interface Props {
-    teaser: Minifig;
+    teasers: Minifig[];
     counter: number;
 }
 
 export const Teaser = (props: Props) => {
-    const { teaser, counter } = props;
-    if (!teaser) return null;
+    const { teasers, counter } = props;
+    if (!teasers || !teasers.length) return null;
+
+    const teaser = teasers.at(-1)!;
+
     return (
         <div className="teaser">
-            <p>{counter}</p>
+            <p className="teaser__counter">{"Our stock is large, it will take some time..."}</p>
+            <p className="teaser__counter">{"Exploring set number " + counter}</p>
             <Picture url={teaser.set_img_url} name={teaser.name} />
         </div>
     );

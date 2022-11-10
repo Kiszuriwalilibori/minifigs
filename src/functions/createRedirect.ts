@@ -1,4 +1,4 @@
-import Paths from "../Routing/Paths";
+import { Paths } from "routes/paths";
 import { History } from "history";
 import { RedirectType } from "types";
 

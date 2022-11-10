@@ -1,5 +1,6 @@
 @import "reset";
 @import "colors";
+@import "mixins";
 @import "sizes";
 @import "fonts";
 @import "utils";
@@ -15,10 +16,14 @@
 @import "order";
 @import "details";
 @import "message";
+@import "teaser";
 
 h1 {
     @extend .header;
     font-size: 48px;
+    @include maxwidth768px {
+        font-size: calc(20px + 28 * ((100vw - 320px) / 448));
+    }
     &.black {
         @extend .header--black;
     }
