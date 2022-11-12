@@ -1,6 +1,3 @@
-@import url(//db.onlinewebfonts.com/c/d6334bc8ac954270190af4dc9f1c4314?family=Gordon&display=swap);
-@import url(//db.onlinewebfonts.com/c/d6334bc8ac954270190af4dc9f1c4314?family=Gordon&display=swap);
-@import url(//db.onlinewebfonts.com/c/d6334bc8ac954270190af4dc9f1c4314?family=Gordon&display=swap);
 html,
 body,
 div,
@@ -162,8 +159,9 @@ a {
 
 @font-face {
   font-family: "Gordon";
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot");
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff") format("woff"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.svg#Gordon") format("svg");
+  src: url "./gordon.woff2" fromat "woff2";
+  src: url("./gordon.ttf") format("truetype");
+  font-display: swap;
 }
 .gordon, .head, .header, h2, h1, .header--black, h2.black, h1.black {
   font-family: Gordon;
@@ -175,8 +173,9 @@ a {
 
 @font-face {
   font-family: "Gordon";
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot");
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff") format("woff"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.svg#Gordon") format("svg");
+  src: url "./gordon.woff2" fromat "woff2";
+  src: url("./gordon.ttf") format("truetype");
+  font-display: swap;
 }
 .gordon, .head, .header, h2, h1, .header--black, h2.black, h1.black {
   font-family: Gordon;
@@ -235,8 +234,9 @@ a {
 
 @font-face {
   font-family: "Gordon";
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot");
-  src: url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.woff") format("woff"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/d6334bc8ac954270190af4dc9f1c4314.svg#Gordon") format("svg");
+  src: url "./gordon.woff2" fromat "woff2";
+  src: url("./gordon.ttf") format("truetype");
+  font-display: swap;
 }
 .gordon, .head, .header, h2, h1, .header--black, h2.black, h1.black {
   font-family: Gordon;

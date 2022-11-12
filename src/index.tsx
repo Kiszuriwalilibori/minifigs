@@ -2,7 +2,8 @@ import ReactDOM from "react-dom";
 
 import "./styles/index.css";
 import breakWhenInternetExplorer from "functions/breakWhenInternetExplorer";
-
+import * as serviceWorker from "./service-worker";
+import { register } from "./serviceWorkerRegistration";
 import { App, AppProvider } from "components";
 
 breakWhenInternetExplorer();
@@ -14,3 +15,5 @@ ReactDOM.render(
 
     document.getElementById("root")
 );
+
+register();
