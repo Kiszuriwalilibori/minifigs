@@ -1,14 +1,16 @@
 import { Minifig } from "types/types";
 import { BasicButton, Name, Picture } from "components";
+import { ReactEventHandler } from "react";
 
 interface Props {
     minifig: Minifig;
     clickHandler: Function;
     isSelected?: boolean;
+    loadHandler: ReactEventHandler<HTMLImageElement>;
 }
 
 const Image = (props: Props) => {
-    const { minifig, clickHandler, isSelected = false } = props;
+    const { minifig, clickHandler, isSelected = false, loadHandler } = props;
 
     return (
         <BasicButton
@@ -18,7 +20,7 @@ const Image = (props: Props) => {
                 clickHandler(minifig);
             }}
         >
-            <Picture url={minifig.set_img_url} name={minifig.name} />
+            <Picture url={minifig.set_img_url} name={minifig.name} loadHandler={loadHandler} />
             <Name text={minifig.name} />
             <a className="link" target="blank" href={minifig.set_url}>
                 Show Details

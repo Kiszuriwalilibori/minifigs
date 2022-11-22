@@ -9,11 +9,30 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-column-gap: 60px;
+            opacity: 0;
+            &.active {
+                animation: images 0.3s ease-in-out forwards;
+            }
+
             @include maxwidth768px {
                 grid-template-columns: 1fr;
                 grid-row-gap: 30px;
                 justify-items: center;
             }
         }
+    }
+}
+
+@keyframes images {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

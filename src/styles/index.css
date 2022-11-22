@@ -139,7 +139,7 @@ a {
 
 :root {
   --background-normal-color: #1f2137;
-  --background-ligh-colort: #2e2e48;
+  --background-ligh-color: #2e2e48;
   --button-color: #018dec;
   --button-hover-color: #126daa;
   --button-text-color: #fefefe;
@@ -454,6 +454,11 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 60px;
+  opacity: 0;
+}
+.select__content-box > .images.active {
+  -webkit-animation: images 0.3s ease-in-out forwards;
+          animation: images 0.3s ease-in-out forwards;
 }
 @media (max-width: 768px) {
   .select__content-box > .images {
@@ -463,6 +468,29 @@ a {
   }
 }
 
+@-webkit-keyframes images {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes images {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .select__content-box {
   display: grid;
   grid-row-gap: 60px;
@@ -472,6 +500,11 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 60px;
+  opacity: 0;
+}
+.select__content-box > .images.active {
+  -webkit-animation: images 0.3s ease-in-out forwards;
+          animation: images 0.3s ease-in-out forwards;
 }
 @media (max-width: 768px) {
   .select__content-box > .images {
@@ -481,6 +514,17 @@ a {
   }
 }
 
+@keyframes images {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .image {
   display: grid;
   grid-row-gap: 20px;

@@ -1,10 +1,9 @@
 import uuid from "react-uuid";
 import isEqual from "lodash/isEqual";
-import Fade from "@material-ui/core/Fade";
 
 import { useLazyAxios } from "use-axios-client";
-import { isEmpty } from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { after, isEmpty } from "lodash";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
@@ -21,6 +20,7 @@ const Select = (props: Props) => {
     const { minifigs } = props;
     const history = useHistory();
     const [selected, setSelected] = useState<SelectedMinifig>({});
+    const refImages = useRef<HTMLDivElement>(null);
 
     const URL = "https://rebrickable.com/api/v3/lego/minifigs/" + (selected as Minifig).set_num + "/parts/?key=" + "8e442d7f1155bab4074dbff1e76bc680";
 
@@ -41,18 +41,20 @@ const Select = (props: Props) => {
         setSelected(minifig);
     }, []);
 
+    const onLoad = after(minifigs.length, () => {
+        refImages.current?.classList.add("active");
+    });
+
     return (
         <div className="select">
             <div className="select__content-box">
                 <h2>Choose your minifig</h2>
-                <Fade in={true} timeout={1500}>
-                    <div className="images">
-                        {minifigs &&
-                            minifigs.map(fig => {
-                                return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} />;
-                            })}
-                    </div>
-                </Fade>
+                <div className="images" ref={refImages}>
+                    {minifigs &&
+                        minifigs.map(fig => {
+                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} loadHandler={onLoad} />;
+                        })}
+                </div>
                 <BasicButton
                     disabled={isEmpty(selected)}
                     className="button uppercased"

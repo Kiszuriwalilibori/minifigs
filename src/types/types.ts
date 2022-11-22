@@ -12,6 +12,12 @@ interface Minifig {
     set_url: string;
     last_modified_dt: string;
 }
+
+interface Category {
+    id: number;
+    parent_id: number;
+    name: string;
+}
 type SelectedMinifig = Minifig | {};
 
 interface ShowError {
@@ -50,4 +56,4 @@ interface SendOrderArgs {
     data: any;
 }
 
-export type { RootStateType, PathKeys, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };
+export type { RootStateType, PathKeys, Category, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };

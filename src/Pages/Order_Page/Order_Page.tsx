@@ -1,4 +1,3 @@
-import { Fade } from "@material-ui/core";
 import { Summary, OrderDetails, Message } from "components";
 
 interface Props {
@@ -9,13 +8,11 @@ interface Props {
 const Order_Page = (props: Props) => {
     const { isMessage, message } = props;
     return (
-        <Fade in={true} timeout={1500}>
-            <div className="order">
-                <OrderDetails />
-                <Summary />
-                {isMessage && <Message message={message} />}
-            </div>
-        </Fade>
+        <div className="order">
+            <OrderDetails />
+            <Summary />
+            {isMessage && <Message message={message} />}
+        </div>
     );
 };
 
