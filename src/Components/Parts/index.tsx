@@ -8,4 +8,4 @@ const mapStateToProps = (state: RootStateType) => ({
     parts: state.selected.withParts,
 });
 
-export default withRouter(connect(mapStateToProps, {})(Parts));
+export default withRouter(connect(mapStateToProps, {})(Parts) as any);

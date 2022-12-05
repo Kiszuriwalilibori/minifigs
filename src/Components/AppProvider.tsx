@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { HashRouter as Router } from "react-router-dom";
@@ -23,7 +23,7 @@ export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
 });
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <Provider store={store}>
             <Router basename={process.env.PUBLIC_URL}>{children}</Router>

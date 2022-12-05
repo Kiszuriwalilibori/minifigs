@@ -15,6 +15,7 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "noFallthroughCasesInSwitch": true,
+        "experimentalDecorators": true,
         "baseUrl": "src",
         "paths": {
             "types/*": ["types/*"],
@@ -25,7 +26,8 @@
             "pages/*": ["pages/*"],
             "icons/*": ["icons/*"],
             "fixtures/*": ["fixtures"],
-            "routing/*": ["routing"]
+            "routing/*": ["routing"],
+            "functions/*": ["functions"]
         }
     },
     "include": ["src"]

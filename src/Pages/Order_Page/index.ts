@@ -9,4 +9,4 @@ const mapStateToProps = (state: RootStateType) => ({
     isMessage: state.fetch.isMessage,
 });
 
-export default withRouter(connect(mapStateToProps, {})(Order_Page));
+export default withRouter(connect(mapStateToProps, {})(Order_Page) as any);

@@ -11,4 +11,4 @@ const mapStateToProps = (state: RootStateType) => ({
     categories: state.categories.categories,
 });
 
-export default withRouter(connect(mapStateToProps, {})(Intro_Page));
+export default withRouter(connect(mapStateToProps, {})(Intro_Page) as any);

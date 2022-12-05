@@ -1,6 +1,5 @@
 import { store } from "components/AppProvider";
-import filterMinifigs from "functions/filterMinifigs";
-import draw from "functions/draw";
+import { filterMinifigs, draw } from "functions";
 
 import { Minifig, RedirectType, ShowError } from "types/types";
 

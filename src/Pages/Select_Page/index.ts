@@ -7,4 +7,4 @@ const mapStateToProps = (state: RootStateType) => ({
     minifigs: state.fetch.minifigs,
 });
 
-export default withRouter(connect(mapStateToProps, {})(Select));
+export default withRouter(connect(mapStateToProps, {})(Select) as any);

@@ -10,7 +10,6 @@ const fetchCategories = (path: string) => {
     function happyEnd() {
         store.dispatch({ type: "CATEGORIES_SET", payload: temporaryStorage });
         store.dispatch({ type: "LOADING_COMPLETE", payload: [] });
-        console.log(temporaryStorage);
     }
 
     function emptyEnd() {

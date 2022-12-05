@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 
 import "./styles/index.css";
-import breakWhenInternetExplorer from "functions/breakWhenInternetExplorer";
-import * as serviceWorker from "./service-worker";
+import { breakWhenInternetExplorer } from "functions";
+//import * as serviceWorker from "./service-worker";
 import { register } from "./serviceWorkerRegistration";
 import { App, AppProvider } from "components";
 

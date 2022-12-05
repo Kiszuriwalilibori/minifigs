@@ -2,7 +2,7 @@ import { RegisterOptions, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import formID from "fixtures";
-import createRedirect from "functions/createRedirect";
+import { createRedirect } from "functions";
 
 import { SendOrder, RedirectType } from "types";
 import { useMemo, useRef } from "react";
