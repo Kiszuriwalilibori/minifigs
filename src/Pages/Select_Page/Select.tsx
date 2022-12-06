@@ -21,10 +21,8 @@ const Select = (props: Props) => {
     const history = useHistory();
     const [selected, setSelected] = useState<SelectedMinifig>({});
     const refImages = useRef<HTMLDivElement>(null);
-
-    const URL = "https://rebrickable.com/api/v3/lego/minifigs/" + (selected as Minifig).set_num + "/parts/?key=" + "8e442d7f1155bab4074dbff1e76bc680";
-
-    const [getData, { data, error, loading: isLoading }] = useLazyAxios({
+    const URL = "https://rebrickable.com/api/v3/lego/minifigs/" + (selected as Minifig).set_num + "/parts/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
+    const [initiateFetchParts, { data, error, loading: isLoading }] = useLazyAxios({
         url: URL,
     });
     const { setSelectedMinifig, setParts } = useDispatchAction();
@@ -61,7 +59,7 @@ const Select = (props: Props) => {
                     onClick={e => {
                         e.stopPropagation();
                         setSelectedMinifig(selected);
-                        getData();
+                        initiateFetchParts();
                     }}
                 >
                     Proceed to shipment
