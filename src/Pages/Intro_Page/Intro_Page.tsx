@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useMemo } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
 
@@ -16,7 +16,7 @@ interface Props {
 
 export const Intro_Page = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
-    const history = useHistory();
+    const history = useNavigate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect = useMemo(createRedirect(history), []);
     const { clearError } = useDispatchAction();

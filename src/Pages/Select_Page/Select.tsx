@@ -3,7 +3,8 @@ import isEqual from "lodash/isEqual";
 
 import { after, isEmpty } from "lodash";
 import { useCallback, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
 
@@ -17,7 +18,8 @@ interface Props {
 }
 const Select = (props: Props) => {
     const { minifigs } = props;
-    const history = useHistory();
+    //const history = useHistory();
+    const history = useNavigate();
     const [selected, setSelected] = useState<SelectedMinifig>({});
     const refImages = useRef<HTMLDivElement>(null);
 
@@ -48,7 +50,7 @@ const Select = (props: Props) => {
                     onClick={e => {
                         e.stopPropagation();
                         setSelectedMinifig(selected);
-                        history.push(Paths.order);
+                        history(Paths.order);
                     }}
                 >
                     Proceed to shipment

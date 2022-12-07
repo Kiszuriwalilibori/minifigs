@@ -1,17 +1,17 @@
 import { Paths } from "routes/paths";
-import { History } from "history";
 import { RedirectType } from "types";
+import { NavigateFunction } from "react-router-dom";
 
-const createRedirect = (history: History) => {
+const createRedirect = (history: NavigateFunction) => {
     return (): RedirectType => ({
         intro: () => {
-            history.push(Paths.intro);
+            history(Paths.intro);
         },
         order: () => {
-            history.push(Paths.order);
+            history(Paths.order);
         },
         select: () => {
-            history.push(Paths.select);
+            history(Paths.select);
         },
     });
 };

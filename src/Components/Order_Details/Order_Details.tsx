@@ -1,5 +1,5 @@
 import { RegisterOptions, useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import formID from "fixtures";
 import { createRedirect } from "functions";
@@ -80,7 +80,7 @@ interface Props {
 }
 export const OrderDetails = (props: Props) => {
     const { sendOrder, setNumber } = props;
-    const history = useHistory();
+    const history = useNavigate();
     const refForm = useRef<HTMLFormElement>(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect: RedirectType = useMemo(createRedirect(history), []);

@@ -29,7 +29,7 @@ export const store = configureStore({
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <Provider store={store}>
-            <Router basename={process.env.PUBLIC_URL}>{children}</Router>
+            <Router>{children}</Router>
         </Provider>
     );
 };
