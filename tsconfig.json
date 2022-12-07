@@ -27,7 +27,8 @@
             "icons/*": ["icons/*"],
             "fixtures/*": ["fixtures"],
             "routing/*": ["routing"],
-            "functions/*": ["functions"]
+            "functions/*": ["functions"],
+            "api/*": ["api"]
         }
     },
     "include": ["src"]

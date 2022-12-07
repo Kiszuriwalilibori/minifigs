@@ -1,15 +1,20 @@
 import uuid from "react-uuid";
 import isEmpty from "lodash/isEmpty";
 
-import { NoParts, Part } from "components";
+import { NoParts, Part, LoadingIndicator } from "components";
 import { PartsItem } from "types";
+import { useGetPartsQuery } from "../../api/partsApi";
 
 interface Props {
-    parts: PartsItem[];
+    minifigsetNumber: string;
 }
 
 export const Parts = (props: Props) => {
-    const { parts } = props;
+    const { minifigsetNumber } = props;
+    const { data: parts, isFetching, isError } = useGetPartsQuery(minifigsetNumber);
+    if (isFetching) return <LoadingIndicator />;
+    if (isError) return <NoParts />;
+
     return parts && !isEmpty(parts) ? (
         <div className="parts">
             {parts.map((partData: PartsItem) => {

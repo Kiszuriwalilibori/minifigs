@@ -11,16 +11,19 @@ import selectedReducer from "reduxware/reducers/selectedReducer";
 import teasersReducer from "reduxware/reducers/teaserReducer";
 import categoriesReducer from "reduxware/reducers/categoriesReducer";
 
+import { partsApi } from "../api/partsApi";
+
 const rootReducer = combineReducers({
     fetch: fetchReducer,
     selected: selectedReducer,
     teasers: teasersReducer,
     categories: categoriesReducer,
+    [partsApi.reducerPath]: partsApi.reducer,
 });
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk).concat(partsApi.middleware),
 });
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

@@ -37,18 +37,17 @@ type RedirectType = {
 };
 type SelectedDetails = any;
 
-interface Atom {
-    part_num: string;
-    name: string;
-    part_img_url: string;
-    part_url: string;
-}
 interface PartsItem {
-    part: Atom;
+    part: {
+        part_num: string;
+        name: string;
+        part_img_url: string;
+        part_url: string;
+    };
 }
 
 interface Results {
-    results: { part: Atom }[];
+    results: PartsItem[];
 }
 
 interface SendOrderArgs {
@@ -56,4 +55,4 @@ interface SendOrderArgs {
     data: any;
 }
 
-export type { RootStateType, PathKeys, Category, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, Atom, SendOrderArgs, SendOrder };
+export type { RootStateType, PathKeys, Category, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, SendOrderArgs, SendOrder };

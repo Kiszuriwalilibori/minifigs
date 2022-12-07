@@ -54,10 +54,3 @@ fade removed, on Selectpage replaced with custom function which checks whether a
 categories are rendered initially on Intropage
 
 ### TODO
-
-<!--
-
-003 https://rebrickable.com/api/v3/lego/minifigs/?key=e007ad9e034759e1cf1bc9128813e890&?search=harry%20potter
-to działa
-
-004 https://rebrickable.com/api/v3/lego/themes/?key=e007ad9e034759e1cf1bc9128813e890 a to opbiera stronę kategorii -->
