@@ -1,7 +1,16 @@
 import { createReducer } from "@reduxjs/toolkit";
-
-import { initialState } from "../initialState_Fetch";
 import { showError, clearError, startLoading, completeLoading, showMessage, hideMessage } from "../actionCreators";
+import { Minifig } from "types/types";
+
+export const initialState = {
+    errorMessage: "",
+    isError: false,
+    isLoading: false,
+    isFetched: false,
+    minifigs: [] as Minifig[],
+    messageMessage: "",
+    isMessage: false,
+};
 
 const fetchReducer = createReducer(initialState, builder => {
     builder

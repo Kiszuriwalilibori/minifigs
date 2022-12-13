@@ -7,6 +7,7 @@ interface Props {
 
 const Order_Page = (props: Props) => {
     const { isMessage, message } = props;
+
     return (
         <div className="order">
             <OrderDetails />

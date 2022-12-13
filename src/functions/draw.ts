@@ -10,6 +10,7 @@ function draw(minifigs: Minifig[]) {
         results.push(minifigs[index]);
         minifigs.splice(index, 1);
     }
+
     return results;
 }
 

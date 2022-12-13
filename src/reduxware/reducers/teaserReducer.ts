@@ -1,6 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { initialState } from "../initialState_Teaser";
-import { updateTeasers, updateCounter } from "../actionCreators";
+
+import { updateTeasers, updateCounter, resetTeasers } from "../actionCreators";
+import { Minifig } from "types";
+
+const initialState = {
+    minifigs: [] as Minifig[],
+    counter: 0,
+};
 
 const teasersReducer = createReducer(initialState, builder => {
     builder.addCase(updateTeasers, (state, action) => {
@@ -10,6 +16,10 @@ const teasersReducer = createReducer(initialState, builder => {
     });
     builder.addCase(updateCounter, state => {
         state.counter++;
+    });
+    builder.addCase(resetTeasers, state => {
+        state.counter = 0;
+        state.minifigs = [];
     });
 });
 

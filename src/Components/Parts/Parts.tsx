@@ -4,14 +4,12 @@ import isEmpty from "lodash/isEmpty";
 import { NoParts, Part, LoadingIndicator } from "components";
 import { PartsItem } from "types";
 import { useGetPartsQuery } from "../../api/partsApi";
+import { getSelectedMinifigNumber } from "reduxware/reducers/selectedMinifigSlice";
+import { useSelector } from "react-redux";
 
-interface Props {
-    minifigsetNumber: string;
-}
-
-export const Parts = (props: Props) => {
-    const { minifigsetNumber } = props;
-    const { data: parts, isFetching, isError } = useGetPartsQuery(minifigsetNumber);
+export const Parts = () => {
+    const minifigID = useSelector(getSelectedMinifigNumber);
+    const { data: parts, isFetching, isError } = useGetPartsQuery(minifigID);
     if (isFetching) return <LoadingIndicator />;
     if (isError) return <NoParts />;
 

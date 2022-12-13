@@ -53,4 +53,13 @@ initial
 fade removed, on Selectpage replaced with custom function which checks whether all images are loaded
 categories are rendered initially on Intropage
 
+#### 1.0.2
+
+selected minifig based on createSlice
+required form fields marked with \*
+after redirect back to initial page counter is reset
+
 ### TODO
+
+parts should be displayed after all parts are loaded
+no Internet fix

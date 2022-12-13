@@ -7,7 +7,6 @@ const mapStateToProps = (state: RootStateType) => ({
     isLoading: state.fetch.isLoading,
     isError: state.fetch.isError,
     errorMessage: state.fetch.errorMessage,
-    categories: state.categories.categories,
 });
 
 export default connect(mapStateToProps, {})(Intro_Page);

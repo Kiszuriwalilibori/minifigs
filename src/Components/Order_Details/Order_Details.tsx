@@ -6,6 +6,8 @@ import { createRedirect } from "functions";
 
 import { SendOrder, RedirectType } from "types";
 import { useMemo, useRef } from "react";
+import { useSelector } from "react-redux";
+import { getSelectedMinifigNumber } from "reduxware/reducers/selectedMinifigSlice";
 
 type Messages = { [key in keyof RegisterOptions]?: string };
 
@@ -76,10 +78,10 @@ const validators: Validators = {
 
 interface Props {
     sendOrder: SendOrder;
-    setNumber: string;
 }
 export const OrderDetails = (props: Props) => {
-    const { sendOrder, setNumber } = props;
+    const { sendOrder } = props;
+    const minifigSetNumber = useSelector(getSelectedMinifigNumber);
     const history = useNavigate();
     const refForm = useRef<HTMLFormElement>(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,7 +95,7 @@ export const OrderDetails = (props: Props) => {
 
     const onFormSubmit = () => {
         const pack = new FormData(refForm.current as HTMLFormElement);
-        pack.append("setNumber", setNumber);
+        pack.append("setNumber", minifigSetNumber);
         pack && sendOrder(redirect, pack);
     };
 
@@ -102,11 +104,8 @@ export const OrderDetails = (props: Props) => {
             <form className="details" id={formID} onSubmit={handleSubmit(onFormSubmit)} ref={refForm}>
                 <h2 className="fromLeft">Shipping details</h2>
                 <div className="foo" id="foo"></div>
-
-                {/**Name */}
-
                 <div className="form-item extendable">
-                    <label>Name</label>
+                    <label className="required">Name</label>
                     <input type="text" {...register("firstName", validators.firstName)} />
                     {errors.firstName && errors.firstName.type === "required" && <span>{messages.required}</span>}
                     {errors.firstName && errors.firstName.type === "minLength" && (
@@ -127,7 +126,7 @@ export const OrderDetails = (props: Props) => {
                 {/**Surname */}
 
                 <div className="form-item extendable">
-                    <label>Surname</label>
+                    <label className="required">Surname</label>
                     <input type="text" {...register("surName", validators.surName)} />
                     {errors.surName && errors.surName.type === "required" && (
                         <span>
@@ -153,7 +152,7 @@ export const OrderDetails = (props: Props) => {
                 {/**Phone */}
 
                 <div className="form-item full-width">
-                    <label>Phone Number</label>
+                    <label className="required">Phone Number</label>
                     <input placeholder="Mobile or regular Polish phone with country code like 048 669086566" type="text" {...register("phone", validators.phone)} />
                     {errors.phone && errors.phone.type === "required" && (
                         <span>
@@ -167,7 +166,7 @@ export const OrderDetails = (props: Props) => {
                 {/**Email */}
 
                 <div className="form-item full-width">
-                    <label>Email</label>
+                    <label className="required">Email</label>
                     <input type="text" {...register("email", validators.email)} />
                     {errors.email && errors.email.type === "required" && (
                         <span>
@@ -187,7 +186,7 @@ export const OrderDetails = (props: Props) => {
                 </div>
 
                 <div className="form-item full-width">
-                    <label>Address</label>
+                    <label className="required">Address</label>
                     <input type="text" {...register("address", validators.address)} />
                     {errors.address && errors.address.type === "required" && (
                         <span>
@@ -201,7 +200,7 @@ export const OrderDetails = (props: Props) => {
                 {/**City */}
 
                 <div className="form-item full-width">
-                    <label>City</label>
+                    <label className="required">City</label>
                     <input type="text" {...register("city", validators.city)} />
                     {errors.city && errors.city.type === "required" && (
                         <span>
@@ -221,7 +220,7 @@ export const OrderDetails = (props: Props) => {
                 {/**State */}
 
                 <div className="form-item">
-                    <label>State</label>
+                    <label className="required">State</label>
                     <input type="text" {...register("state", validators.state)} />
                     {errors.state && errors.state.type === "required" && (
                         <span>
@@ -241,7 +240,7 @@ export const OrderDetails = (props: Props) => {
                 {/**Zip Code */}
 
                 <div className="form-item">
-                    <label>Zip Code</label>
+                    <label className="required">Zip Code</label>
                     <input type="text" placeholder=" zip code in format xx-xxx" {...register("zip", validators.zip)} />
                     {errors.zip && errors.zip.type === "required" && (
                         <span>

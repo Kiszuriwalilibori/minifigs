@@ -3,7 +3,6 @@ import isEqual from "lodash/isEqual";
 
 import { after, isEmpty } from "lodash";
 import { useCallback, useRef, useState } from "react";
-//import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
@@ -18,13 +17,11 @@ interface Props {
 }
 const Select = (props: Props) => {
     const { minifigs } = props;
-    //const history = useHistory();
     const history = useNavigate();
     const [selected, setSelected] = useState<SelectedMinifig>({});
     const refImages = useRef<HTMLDivElement>(null);
 
-    const { setSelectedMinifig } = useDispatchAction();
-
+    const { setSelection } = useDispatchAction();
     const selectMinifig = useCallback((minifig: SelectedMinifig) => {
         setSelected(minifig);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,7 +46,7 @@ const Select = (props: Props) => {
                     className="button uppercased"
                     onClick={e => {
                         e.stopPropagation();
-                        setSelectedMinifig(selected);
+                        setSelection(selected);
                         history(Paths.order);
                     }}
                 >

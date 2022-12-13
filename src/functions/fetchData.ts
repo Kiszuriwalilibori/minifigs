@@ -23,13 +23,14 @@ const fetchData = (path: string, redirect: RedirectType) => {
     }
 
     function theEnd(storage: Minifig[]) {
+        store.dispatch({ type: "RESET_TEASERS" });
         if (temporaryStorage.length === 0) {
             emptyEnd();
         } else {
             happyEnd();
         }
     }
-    //var counter = 0;
+
     async function recursiveSingleFetch() {
         var fullPath = nextURL || path;
         const fetchResult = await fetch(fullPath).catch(error => {
@@ -52,7 +53,6 @@ const fetchData = (path: string, redirect: RedirectType) => {
                 if (resp.next) {
                     nextURL = resp.next;
                     setTimeout(recursiveSingleFetch, 1000);
-                    //counter++;
                     store.dispatch({ type: "COUNTER_UPDATE" });
                 } else {
                     theEnd(temporaryStorage);

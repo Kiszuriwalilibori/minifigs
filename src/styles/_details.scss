@@ -38,6 +38,14 @@
         & label {
             color: white;
             margin-bottom: 10px;
+            position: relative;
+            &.required:before {
+                content: " *";
+                display: block;
+                position: absolute;
+                top: 0;
+                right: -8px;
+            }
         }
         & input {
             width: 100%;

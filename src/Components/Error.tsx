@@ -7,6 +7,7 @@ interface Props {
 
 const Error = (props: Props): JSX.Element => {
     const { message, handleClear } = props;
+
     return (
         <article className="error">
             <div className="message">
