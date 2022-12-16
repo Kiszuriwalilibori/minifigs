@@ -2,7 +2,7 @@ import { RootStateType } from "components/AppProvider";
 
 import { SendOrder } from "reduxware/thunks/sendOrder";
 
-type PathKeys = "intro" | "order" | "select";
+type PathKeys = "intro" | "order" | "select" | "nopage";
 
 interface Minifig {
     set_num: string;

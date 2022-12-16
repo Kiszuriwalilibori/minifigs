@@ -13,6 +13,9 @@ const createRedirect = (history: NavigateFunction) => {
         select: () => {
             history(Paths.select);
         },
+        nopage: () => {
+            history(Paths.nopage);
+        },
     });
 };
 
