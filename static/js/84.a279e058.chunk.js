@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkminifigs=self.webpackChunkminifigs||[]).push([[84],{8084:function(n,e,i){i.r(e),i.d(e,{default:function(){return r}});var s=i(184),r=function(){return(0,s.jsxs)("div",{className:"nopage",children:[(0,s.jsxs)("h2",{children:['Ojejku! Strony o adresie "',window.location.href,'" po prostu nie ma :(']}),";"]})}}}]);
-//# sourceMappingURL=84.a279e058.chunk.js.map
