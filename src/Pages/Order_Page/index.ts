@@ -4,7 +4,7 @@ import { RootStateType } from "types";
 import Order_Page from "./Order_Page";
 
 const mapStateToProps = (state: RootStateType) => ({
-    message: state.fetch.messageMessage,
+    message: state.fetch.anyMessage,
     isMessage: state.fetch.isMessage,
 });
 

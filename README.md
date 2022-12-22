@@ -59,7 +59,22 @@ selected minifig based on createSlice
 required form fields marked with \*
 after redirect back to initial page counter is reset
 
+### 1.0.3
+
+reasonably persistent
+body restyled to have background color to avoid blinking when navigation happens
+parts are displayed after all of them are loaded
+select styles well also for 1 or 2 minifigs found
+
 ### TODO
 
-parts should be displayed after all parts are loaded
-no Internet fix
+no Internet-not-available fix
+
+fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
+
+RTK w useGetParstsQuery: zrobić refetcha po odzyskaniu internetu
+
+loading i error jako tunele???
+możnaby zrobić ostateczne wybieranie minifiga tylko jako ustalenie w reduxie jego indexu, a wtedy korzystaloby się z selectora a nie z nowego figa.
+moznaby rozszerzyć definicję minifiga o pole select dla wyboru wstępnego( do stylowania) ale jeszcze lepiej o nowy zupełnie klucz jak powyżej
+wzięcie pierwszego figa zawsze jest bez obrazka? rzuca podpis zamiast obrazka

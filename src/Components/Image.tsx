@@ -1,4 +1,4 @@
-import { Minifig } from "types/types";
+import { Minifig } from "types";
 import { BasicButton, Name, Picture } from "components";
 import { ReactEventHandler } from "react";
 

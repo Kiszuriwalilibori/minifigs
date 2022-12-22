@@ -4,7 +4,7 @@ import { RootStateType } from "types";
 import Select from "./Select";
 
 const mapStateToProps = (state: RootStateType) => ({
-    minifigs: state.fetch.minifigs,
+    minifigs: state.draw.minifigs,
 });
 
 export default connect(mapStateToProps, {})(Select);

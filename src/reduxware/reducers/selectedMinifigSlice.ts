@@ -10,9 +10,12 @@ const selection = createSlice({
         setSelection(state, action: PayloadAction<SelectedMinifig>) {
             state.minifig = action.payload;
         },
+        clearSelection(state, action: PayloadAction<void>) {
+            state.minifig = initialState.minifig;
+        },
     },
 });
 export default selection.reducer;
-export const { setSelection } = selection.actions;
+export const { setSelection, clearSelection } = selection.actions;
 export const getSelectedMinifig = (state: { selection: { minifig: SelectedMinifig } }) => state.selection.minifig;
 export const getSelectedMinifigNumber = (state: { selection: { minifig: SelectedMinifig } }) => (state.selection.minifig as Minifig).set_num;

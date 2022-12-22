@@ -1,6 +1,6 @@
-import { Minifig } from "types/types";
+import { Minifigs } from "types";
 
-const filterMinifigs = (figs: Minifig[], str: string) => {
+const filterMinifigs = (figs: Minifigs, str: string) => {
     const result = figs.filter(item => {
         return item.name.toLowerCase().includes(str.toLowerCase()) && item.set_img_url;
     });

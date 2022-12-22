@@ -1,14 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { showError, clearError, startLoading, completeLoading, showMessage, hideMessage } from "../actionCreators";
-import { Minifig } from "types/types";
 
 export const initialState = {
     errorMessage: "",
     isError: false,
     isLoading: false,
     isFetched: false,
-    minifigs: [] as Minifig[],
-    messageMessage: "",
+    anyMessage: "",
     isMessage: false,
 };
 
@@ -20,27 +18,26 @@ const fetchReducer = createReducer(initialState, builder => {
             state.errorMessage = errorMessage;
             state.isLoading = false;
         })
-        .addCase(clearError, (state, action) => {
+        .addCase(clearError, state => {
             state.isError = false;
             state.errorMessage = "";
         })
-        .addCase(startLoading, (state, action) => {
+        .addCase(startLoading, state => {
             state.isLoading = true;
         })
-        .addCase(completeLoading, (state, action) => {
+        .addCase(completeLoading, state => {
             state.isLoading = false;
             state.isError = false;
             state.errorMessage = "";
-            state.minifigs = action.payload;
         })
         .addCase(showMessage, (state, action) => {
-            const { isMessage, messageMessage } = action.payload;
+            const { isMessage, anyMessage } = action.payload;
             state.isMessage = true;
-            if (action.payload) state.messageMessage = messageMessage;
+            if (action.payload) state.anyMessage = anyMessage;
         })
         .addCase(hideMessage, (state, action) => {
             state.isMessage = false;
-            state.messageMessage = "";
+            state.anyMessage = "";
         });
 });
 

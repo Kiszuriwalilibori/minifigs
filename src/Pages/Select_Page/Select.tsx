@@ -27,9 +27,13 @@ const Select = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const onLoad = after(minifigs.length, () => {
-        refImages.current?.classList.add("active");
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onLoad = useCallback(
+        after(minifigs.length, () => {
+            refImages.current?.classList.add("active");
+        }),
+        []
+    );
 
     return (
         <div className="select">
@@ -38,7 +42,8 @@ const Select = (props: Props) => {
                 <div className="images" ref={refImages}>
                     {minifigs &&
                         minifigs.map(fig => {
-                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={isEqual(fig, selected)} loadHandler={onLoad} />;
+                            const wasSelected = isEqual(fig, selected);
+                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={wasSelected} loadHandler={onLoad} />;
                         })}
                 </div>
                 <BasicButton

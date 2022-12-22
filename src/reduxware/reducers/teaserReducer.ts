@@ -1,10 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import { updateTeasers, updateCounter, resetTeasers } from "../actionCreators";
-import { Minifig } from "types";
+import { Minifigs } from "types";
 
 const initialState = {
-    minifigs: [] as Minifig[],
+    minifigs: [] as Minifigs,
     counter: 0,
 };
 

@@ -1,16 +1,17 @@
 import { store } from "components/AppProvider";
 import { filterMinifigs, draw } from "functions";
 
-import { Minifig, RedirectType, ShowError } from "types/types";
+import { Minifigs, RedirectType, ShowError } from "types";
 
 const fetchData = (path: string, redirect: RedirectType) => {
-    let temporaryStorage: Minifig[] = [];
+    let temporaryStorage: Minifigs = [];
     var nextURL: string;
     store.dispatch({ type: "LOADING_START" });
 
     function happyEnd() {
         const trio = draw(temporaryStorage);
-        store.dispatch({ type: "LOADING_COMPLETE", payload: trio });
+        store.dispatch({ type: "LOADING_COMPLETE" });
+        store.dispatch({ type: "DRAW_SET", payload: trio });
         redirect.select();
     }
 
@@ -22,7 +23,7 @@ const fetchData = (path: string, redirect: RedirectType) => {
         store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
     }
 
-    function theEnd(storage: Minifig[]) {
+    function theEnd(storage: Minifigs) {
         store.dispatch({ type: "RESET_TEASERS" });
         if (temporaryStorage.length === 0) {
             emptyEnd();

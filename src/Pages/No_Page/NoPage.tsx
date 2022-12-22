@@ -11,7 +11,7 @@ const NoPage = () => {
     }, []);
     return (
         <div className="nopage">
-            <h2>Ojejku! Strony o adresie "{window.location.href}" po prostu nie ma &#128549;</h2>;
+            <h2>Ojejku! Strony o adresie "{decodeURIComponent(window.location.href)}" po prostu nie ma &#128549;</h2>;
         </div>
     );
 };

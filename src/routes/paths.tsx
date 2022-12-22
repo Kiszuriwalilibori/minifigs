@@ -1,4 +1,4 @@
-import { PathKeys } from "types/types";
+import { PathKeys } from "types";
 
 export const Paths: { [key in PathKeys]: string } = {
     select: "/select",

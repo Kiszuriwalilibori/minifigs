@@ -107,6 +107,7 @@ section {
 
 body {
   line-height: 1;
+  background-color: var(--background-normal-color);
 }
 
 ol,
@@ -451,8 +452,7 @@ a {
   padding-bottom: 60px;
 }
 .select__content-box > .images {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   grid-column-gap: 60px;
   opacity: 0;
 }
@@ -553,6 +553,13 @@ a {
   background: var(--text-background);
   padding: 10px 0;
   margin-bottom: 30px;
+  opacity: 0;
+  visibility: hidden;
+}
+.parts.active {
+  visibility: visible;
+  -webkit-animation: images 0.3s ease-in-out forwards;
+          animation: images 0.3s ease-in-out forwards;
 }
 .parts .part {
   margin: 10px 0;

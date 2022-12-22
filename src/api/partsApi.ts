@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { Results } from "types/types";
+import { Results } from "types";
 export const partsApi = createApi({
     reducerPath: "partsApi",
     baseQuery: fetchBaseQuery({ baseUrl: "https://rebrickable.com/api/v3/lego/minifigs/" }),

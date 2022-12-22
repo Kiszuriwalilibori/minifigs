@@ -1,9 +1,9 @@
-import { Minifig } from "types";
+import { Minifigs } from "types";
 
 import { Picture } from "components";
 
 interface Props {
-    teasers: Minifig[];
+    teasers: Minifigs;
     counter: number;
 }
 

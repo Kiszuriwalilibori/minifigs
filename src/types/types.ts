@@ -13,6 +13,8 @@ interface Minifig {
     last_modified_dt: string;
 }
 
+type Minifigs = Minifig[];
+
 interface Category {
     id: number;
     parent_id: number;
@@ -27,7 +29,7 @@ interface ShowError {
 
 interface ShowMessage {
     isMessage: boolean;
-    messageMessage: string;
+    anyMessage: string;
 }
 
 type HistoryCall = () => void;
@@ -55,4 +57,4 @@ interface SendOrderArgs {
     data: any;
 }
 
-export type { RootStateType, PathKeys, Category, Minifig, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, SendOrderArgs, SendOrder };
+export type { RootStateType, PathKeys, Category, Minifig, Minifigs, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, SendOrderArgs, SendOrder };

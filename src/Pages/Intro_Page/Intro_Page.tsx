@@ -5,6 +5,8 @@ import useDispatchAction from "hooks/useDispatchAction";
 
 import { fetchData, createRedirect } from "functions";
 import { BasicButton, Error, LoadingIndicator, Teaser } from "components";
+import { useSelector } from "react-redux";
+import { getRunningStatus } from "reduxware/reducers/isRunningSlice";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 
@@ -19,13 +21,18 @@ export const Intro_Page = (props: Props) => {
     const history = useNavigate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect = useMemo(createRedirect(history), []);
-    const { clearError } = useDispatchAction();
+    const { clearError, clearSelection, clearDraw, setRunningTrue } = useDispatchAction();
 
     const refButton = useRef<HTMLButtonElement>(null);
+    const isRunning = useSelector(getRunningStatus);
 
     useEffect(() => {
+        if (!isRunning) {
+            clearSelection();
+            clearDraw();
+            setRunningTrue();
+        }
         refButton.current && refButton.current.focus();
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -39,7 +46,13 @@ export const Intro_Page = (props: Props) => {
             <div className="intro">
                 <div className="intro__content-box">
                     <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                    <BasicButton className="button uppercased" ref={refButton} onClick={() => fetchData(initialURL, redirect)}>
+                    <BasicButton
+                        className="button uppercased"
+                        ref={refButton}
+                        onClick={e => {
+                            fetchData(initialURL, redirect);
+                        }}
+                    >
                         Lets'go
                     </BasicButton>
                 </div>

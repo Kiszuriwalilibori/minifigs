@@ -21,7 +21,7 @@ export const sendOrder = (redirect: RedirectType, data: any): ThunkAction<void, 
             .then(json => {
                 if (json) {
                     try {
-                        dispatch(showMessage({ isMessage: true, messageMessage: "Your order has been successfully proceeded" }));
+                        dispatch(showMessage({ isMessage: true, anyMessage: "Your order has been successfully proceeded" }));
                         setTimeout(redirect.intro, timeout);
                         setTimeout(hideMessage, timeout);
                     } catch (error) {

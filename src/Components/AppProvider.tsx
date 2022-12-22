@@ -5,29 +5,52 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import teasersReducer from "reduxware/reducers/teaserReducer";
 import selectionReducer from "reduxware/reducers/selectedMinifigSlice";
+import drawReducer from "reduxware/reducers/drawReducer.ts";
+import runningReducer from "reduxware/reducers/isRunningSlice";
 
 import { partsApi } from "../api/partsApi";
+import { PersistGate } from "redux-persist/integration/react";
+
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["selection", "draw"],
+};
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
     teasers: teasersReducer,
     selection: selectionReducer,
+    draw: drawReducer,
+    running: runningReducer,
     [partsApi.reducerPath]: partsApi.reducer,
 });
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk).concat(partsApi.middleware),
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        })
+            .concat(thunk)
+            .concat(partsApi.middleware),
 });
-
+let persistor = persistStore(store);
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <Provider store={store}>
-            <Router>{children}</Router>
+            <PersistGate loading={null} persistor={persistor}>
+                <Router>{children}</Router>
+            </PersistGate>
         </Provider>
     );
 };

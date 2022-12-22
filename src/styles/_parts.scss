@@ -5,12 +5,19 @@
     background: var(--text-background);
     padding: 10px 0;
     margin-bottom: 30px;
+    opacity: 0;
+    visibility: hidden;
+    &.active {
+        visibility: visible;
+        animation: images 0.3s ease-in-out forwards;
+    }
 
     & .part {
         margin: 10px 0;
         display: flex;
         flex-direction: row;
         align-items: center;
+
         & .part__text-items {
             padding-left: 20px;
         }
