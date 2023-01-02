@@ -1,6 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import { ShowError, ShowMessage, Minifig } from "types/types";
-export { setSelection, clearSelection } from "reduxware/reducers/selectedMinifigSlice";
+
+export { setSelectedMinifigId, clearSelectedMinifigId } from "reduxware/reducers/chosenMinifigIdSlice";
 export { setRunningFalse, setRunningTrue } from "reduxware/reducers/isRunningSlice";
 
 export const showError = createAction<ShowError>("ERROR_SHOW");

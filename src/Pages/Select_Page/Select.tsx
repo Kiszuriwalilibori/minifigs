@@ -21,7 +21,7 @@ const Select = (props: Props) => {
     const [selected, setSelected] = useState<SelectedMinifig>({});
     const refImages = useRef<HTMLDivElement>(null);
 
-    const { setSelection } = useDispatchAction();
+    const { setSelectedMinifigId } = useDispatchAction();
     const selectMinifig = useCallback((minifig: SelectedMinifig) => {
         setSelected(minifig);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,7 +51,7 @@ const Select = (props: Props) => {
                     className="button uppercased"
                     onClick={e => {
                         e.stopPropagation();
-                        setSelection(selected);
+                        setSelectedMinifigId((selected as Minifig).set_num);
                         history(Paths.order);
                     }}
                 >

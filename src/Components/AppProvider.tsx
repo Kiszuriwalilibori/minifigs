@@ -10,9 +10,10 @@ import storage from "redux-persist/lib/storage";
 
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import teasersReducer from "reduxware/reducers/teaserReducer";
-import selectionReducer from "reduxware/reducers/selectedMinifigSlice";
 import drawReducer from "reduxware/reducers/drawReducer.ts";
 import runningReducer from "reduxware/reducers/isRunningSlice";
+import selectedMinifigIdReducer from "reduxware/reducers/chosenMinifigIdSlice";
+import counterReducer from "reduxware/reducers/counterReducer";
 
 import { partsApi } from "../api/partsApi";
 import { PersistGate } from "redux-persist/integration/react";
@@ -20,15 +21,16 @@ import { PersistGate } from "redux-persist/integration/react";
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["selection", "draw"],
+    whitelist: ["draw", "selectedMinifigId"],
 };
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
     teasers: teasersReducer,
-    selection: selectionReducer,
     draw: drawReducer,
     running: runningReducer,
+    selectedMinifigId: selectedMinifigIdReducer,
+    counter: counterReducer,
     [partsApi.reducerPath]: partsApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);

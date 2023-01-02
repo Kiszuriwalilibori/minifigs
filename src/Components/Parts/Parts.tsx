@@ -6,12 +6,13 @@ import { useRef } from "react";
 
 import { NoParts, Part, LoadingIndicator } from "components";
 import { PartsItem } from "types";
+import { isOffline } from "functions";
 import { useGetPartsQuery } from "../../api/partsApi";
-import { getSelectedMinifigNumber } from "reduxware/reducers/selectedMinifigSlice";
+import { getSelectedMinifigNumber } from "reduxware/selectors";
 
 export const Parts = () => {
     const minifigID = useSelector(getSelectedMinifigNumber);
-    const { data: parts, isFetching, isError } = useGetPartsQuery(minifigID);
+    const { data: parts, isFetching, isError } = useGetPartsQuery(minifigID, { skip: isOffline() });
     const refImages = useRef<HTMLDivElement>(null);
 
     const onLoad = parts

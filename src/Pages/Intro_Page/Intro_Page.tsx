@@ -6,7 +6,7 @@ import useDispatchAction from "hooks/useDispatchAction";
 import { fetchData, createRedirect } from "functions";
 import { BasicButton, Error, LoadingIndicator, Teaser } from "components";
 import { useSelector } from "react-redux";
-import { getRunningStatus } from "reduxware/reducers/isRunningSlice";
+import { getRunningStatus } from "reduxware/selectors";
 
 const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
 
@@ -21,14 +21,14 @@ export const Intro_Page = (props: Props) => {
     const history = useNavigate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect = useMemo(createRedirect(history), []);
-    const { clearError, clearSelection, clearDraw, setRunningTrue } = useDispatchAction();
+    const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
 
     const refButton = useRef<HTMLButtonElement>(null);
     const isRunning = useSelector(getRunningStatus);
 
     useEffect(() => {
         if (!isRunning) {
-            clearSelection();
+            clearSelectedMinifigId();
             clearDraw();
             setRunningTrue();
         }
@@ -40,7 +40,6 @@ export const Intro_Page = (props: Props) => {
         clearError();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
     return (
         <>
             <div className="intro">

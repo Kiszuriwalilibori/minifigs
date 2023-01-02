@@ -1,22 +1,22 @@
-import { Minifigs } from "types";
+import { isEmpty } from "lodash";
+
+import { Minifig } from "types";
 
 import { Picture } from "components";
+import Counter from "../Counter";
 
 interface Props {
-    teasers: Minifigs;
-    counter: number;
+    teaser: Minifig;
 }
-
 export const Teaser = (props: Props) => {
-    const { teasers, counter } = props;
-    if (!teasers || !teasers.length) return null;
+    const { teaser } = props;
 
-    const teaser = teasers.at(-1)!;
+    if (isEmpty(teaser)) return null;
 
     return (
         <div className="teaser">
-            <p className="teaser__counter">{"Our stock is large, it will take some time..."}</p>
-            <p className="teaser__counter">{"Exploring set number " + counter}</p>
+            <p className="teaser__counter">{"Our stock is large, it will take some time. Besides, admin (shame on him) set 1s interval between requests. That is why it takes that long "}</p>
+            <Counter />
             <Picture url={teaser.set_img_url} name={teaser.name} />
         </div>
     );

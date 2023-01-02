@@ -1,9 +1,19 @@
 import { store } from "components/AppProvider";
-import { filterMinifigs, draw } from "functions";
+import { filterMinifigs, draw, isOffline } from "functions";
 
 import { Minifigs, RedirectType, ShowError } from "types";
 
 const fetchData = (path: string, redirect: RedirectType) => {
+    if (isOffline()) {
+        const showErrorPayload: ShowError = {
+            isError: true,
+            errorMessage: "No Internet available",
+        };
+        store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
+
+        return;
+    }
+
     let temporaryStorage: Minifigs = [];
     var nextURL: string;
     store.dispatch({ type: "LOADING_START" });

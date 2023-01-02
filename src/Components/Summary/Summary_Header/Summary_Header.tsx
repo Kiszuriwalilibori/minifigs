@@ -1,7 +1,7 @@
 import { Minifig } from "types/index";
 import { Picture, Name } from "components";
 import { useSelector } from "react-redux";
-import { getSelectedMinifig } from "reduxware/reducers/selectedMinifigSlice";
+import { getSelectedMinifig } from "reduxware/selectors";
 
 export const Summary_Header = () => {
     const fig = useSelector(getSelectedMinifig);

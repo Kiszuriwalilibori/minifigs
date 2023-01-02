@@ -1,3 +1,5 @@
+import ReactDOM from "react-dom";
+
 import { BasicButton } from "components";
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 const Error = (props: Props): JSX.Element => {
     const { message, handleClear } = props;
 
-    return (
+    return ReactDOM.createPortal(
         <article className="error">
             <div className="message">
                 <p className="message__general-message">Oops, something went wrong &#128549;</p>
@@ -21,8 +23,11 @@ const Error = (props: Props): JSX.Element => {
                     </svg>
                 </BasicButton>
             </div>
-        </article>
+        </article>,
+        document.body
     );
 };
 
 export default Error;
+
+//return ReactDOM.createPortal(<article className="loading">Loading&#8230;</article>, document.body);

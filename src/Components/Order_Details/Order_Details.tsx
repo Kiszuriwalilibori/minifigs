@@ -7,7 +7,7 @@ import { createRedirect } from "functions";
 import { SendOrder, RedirectType } from "types";
 import { useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
-import { getSelectedMinifigNumber } from "reduxware/reducers/selectedMinifigSlice";
+import { getSelectedMinifigNumber } from "reduxware/selectors";
 
 type Messages = { [key in keyof RegisterOptions]?: string };
 
@@ -82,6 +82,7 @@ interface Props {
 export const OrderDetails = (props: Props) => {
     const { sendOrder } = props;
     const minifigSetNumber = useSelector(getSelectedMinifigNumber);
+
     const history = useNavigate();
     const refForm = useRef<HTMLFormElement>(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps

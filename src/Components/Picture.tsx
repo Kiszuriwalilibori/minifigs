@@ -1,3 +1,4 @@
+import React from "react";
 import { ReactEventHandler } from "react";
 
 interface Props {
@@ -14,4 +15,4 @@ const Picture = (props: Props) => {
         </div>
     );
 };
-export default Picture;
+export default React.memo(Picture);

@@ -66,15 +66,26 @@ body restyled to have background color to avoid blinking when navigation happens
 parts are displayed after all of them are loaded
 select styles well also for 1 or 2 minifigs found
 
-### TODO
+### 1.0.4
 
-no Internet-not-available fix
+fix for no-internet connection
+RTK Query with refetch on restored internet connection
+selected fig is available as filtered one from draw, with memoised selector
+
+### 1.0.5
+
+Error and loading indicator as portals now
+refectored Teaser
+counter has separate reducer
+runningStatus imported by selectors
+selected minifig is taken by filtering exissting draw, without creating new state item
+precautions against trying to fetch anything when network is not available
+
+### TODO
 
 fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
 
-RTK w useGetParstsQuery: zrobić refetcha po odzyskaniu internetu
+error jako portal
 
-loading i error jako tunele???
-możnaby zrobić ostateczne wybieranie minifiga tylko jako ustalenie w reduxie jego indexu, a wtedy korzystaloby się z selectora a nie z nowego figa.
-moznaby rozszerzyć definicję minifiga o pole select dla wyboru wstępnego( do stylowania) ale jeszcze lepiej o nowy zupełnie klucz jak powyżej
-wzięcie pierwszego figa zawsze jest bez obrazka? rzuca podpis zamiast obrazka
+wzięcie pierwszego figa zawsze jest bez obrazka? rzuca alt text zamiast obrazka
+zaskakująco duzo obrazków ma komunikat o błędzie, z drugiej strony wszystkie sie wyświetlaja.
