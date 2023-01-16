@@ -32,11 +32,18 @@ The following tools and resources has been used while developing Google Books
 ### Installation
 
 -   Not required. Just open index.html in the browser
--   For local use: fetch/copy while content of repo <https://github.com/Kiszuriwalilibori/minifigs> master branch
--   run npm install (here and below - assume youse of npm, for yarn or others use equivalents)
--   receive API access key
--   create .env file with content REACT_APP_MINIFIGS_KEY = your key here
--   run npm start
+
+### Steps to create copy for local use
+
+1. Fetch/clone content of master branch of repo <https://github.com/Kiszuriwalilibori/minifigs> to newly created directory
+2. Run npm install (note ready for yarn).
+3. Register as user and obtain your own api key from https://rebrickable.com/
+4. In project main directory add .env file with the following content
+
+REACT_APP_API_KEY ={your api key}.
+
+5. Start app with npm run
+6. Enjoy app
 
 ### Browser limitations
 
