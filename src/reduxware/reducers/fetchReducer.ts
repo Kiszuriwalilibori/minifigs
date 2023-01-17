@@ -31,7 +31,7 @@ const fetchReducer = createReducer(initialState, builder => {
             state.errorMessage = "";
         })
         .addCase(showMessage, (state, action) => {
-            const { isMessage, anyMessage } = action.payload;
+            const { anyMessage } = action.payload;
             state.isMessage = true;
             if (action.payload) state.anyMessage = anyMessage;
         })

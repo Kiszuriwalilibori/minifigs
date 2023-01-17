@@ -1,7 +1,5 @@
-import { CaseReducer, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Minifigs } from "types";
-
-//function setDraw<T> (state:T, action:PayloadAction<T>){ state =action.payload}
 
 const initialState = { minifigs: [] as Minifigs };
 

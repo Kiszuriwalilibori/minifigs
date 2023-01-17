@@ -29,5 +29,3 @@ const Error = (props: Props): JSX.Element => {
 };
 
 export default Error;
-
-//return ReactDOM.createPortal(<article className="loading">Loading&#8230;</article>, document.body);
