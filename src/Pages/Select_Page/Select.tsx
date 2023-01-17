@@ -5,8 +5,7 @@ import { after, isEmpty } from "lodash";
 import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useDispatchAction from "hooks/useDispatchAction";
-
+import { useDispatchAction } from "hooks";
 import { Minifig, SelectedMinifig } from "types/types";
 import { Image } from "components";
 import { BasicButton } from "components";

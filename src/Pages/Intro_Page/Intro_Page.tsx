@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useDispatchAction from "hooks/useDispatchAction";
-
+import { useDispatchAction, useCheckApiKey } from "hooks";
 import { fetchData, createRedirect } from "functions";
 import { BasicButton, Error, LoadingIndicator, Teaser } from "components";
 import { useSelector } from "react-redux";
@@ -19,6 +18,7 @@ interface Props {
 export const Intro_Page = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
     const history = useNavigate();
+    const isApiKeyAvailable = useCheckApiKey();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const redirect = useMemo(createRedirect(history), []);
     const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
@@ -40,6 +40,8 @@ export const Intro_Page = (props: Props) => {
         clearError();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if (!isApiKeyAvailable) return <Error message={errorMessage} handleClear={handleClear} />;
     return (
         <>
             <div className="intro">
