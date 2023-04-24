@@ -97,5 +97,4 @@ checking app key availablity prior anything else
 fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
 
 wzięcie pierwszego figa zawsze jest bez obrazka? rzuca alt text zamiast obrazka
-zaskakująco duzo obrazków ma komunikat o błędzie, z drugiej strony wszystkie sie wyświetlaja.
-hooks zasługują już na index
+zaskakująco duzo obrazków ma komunikat o błędzie w podglądzie sieci, z drugiej strony wszystkie sie wyświetlają.
