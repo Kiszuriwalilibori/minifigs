@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/minifigs/static/css/main.b86d290d.css",
-    "main.js": "/minifigs/static/js/main.c006cb5b.js",
-    "static/js/355.c3ff91f7.chunk.js": "/minifigs/static/js/355.c3ff91f7.chunk.js",
-    "static/js/973.51d909af.chunk.js": "/minifigs/static/js/973.51d909af.chunk.js",
+    "main.css": "/minifigs/static/css/main.3d916cad.css",
+    "main.js": "/minifigs/static/js/main.9be29b0d.js",
+    "static/js/652.e265a587.chunk.js": "/minifigs/static/js/652.e265a587.chunk.js",
+    "static/js/489.fdc6e84b.chunk.js": "/minifigs/static/js/489.fdc6e84b.chunk.js",
     "static/js/84.c93c00b6.chunk.js": "/minifigs/static/js/84.c93c00b6.chunk.js",
-    "static/js/111.a2606bca.chunk.js": "/minifigs/static/js/111.a2606bca.chunk.js",
+    "static/js/465.98bc974b.chunk.js": "/minifigs/static/js/465.98bc974b.chunk.js",
+    "static/js/475.240d7eae.chunk.js": "/minifigs/static/js/475.240d7eae.chunk.js",
     "service-worker.js": "/minifigs/service-worker.js",
     "static/media/gordon.ttf": "/minifigs/static/media/gordon.e1472f82d4276d60ef8e.ttf",
     "index.html": "/minifigs/index.html",
-    "main.b86d290d.css.map": "/minifigs/static/css/main.b86d290d.css.map",
-    "main.c006cb5b.js.map": "/minifigs/static/js/main.c006cb5b.js.map",
-    "355.c3ff91f7.chunk.js.map": "/minifigs/static/js/355.c3ff91f7.chunk.js.map",
-    "973.51d909af.chunk.js.map": "/minifigs/static/js/973.51d909af.chunk.js.map",
+    "main.3d916cad.css.map": "/minifigs/static/css/main.3d916cad.css.map",
+    "main.9be29b0d.js.map": "/minifigs/static/js/main.9be29b0d.js.map",
+    "652.e265a587.chunk.js.map": "/minifigs/static/js/652.e265a587.chunk.js.map",
+    "489.fdc6e84b.chunk.js.map": "/minifigs/static/js/489.fdc6e84b.chunk.js.map",
     "84.c93c00b6.chunk.js.map": "/minifigs/static/js/84.c93c00b6.chunk.js.map",
-    "111.a2606bca.chunk.js.map": "/minifigs/static/js/111.a2606bca.chunk.js.map"
+    "465.98bc974b.chunk.js.map": "/minifigs/static/js/465.98bc974b.chunk.js.map",
+    "475.240d7eae.chunk.js.map": "/minifigs/static/js/475.240d7eae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b86d290d.css",
-    "static/js/main.c006cb5b.js"
+    "static/css/main.3d916cad.css",
+    "static/js/main.9be29b0d.js"
   ]
 }
