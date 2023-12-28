@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkminifigs=self.webpackChunkminifigs||[]).push([[84],{8084:function(e,n,i){i.r(n),i.d(n,{default:function(){return u}});var s=i(2791),o=i(7689),t=i(184),u=function(){var e=(0,o.s0)();return(0,s.useEffect)((function(){setTimeout((function(){e(-1)}),2e3)}),[]),(0,t.jsxs)("div",{className:"nopage",children:[(0,t.jsxs)("h2",{children:['Ojejku! Strony o adresie "',decodeURIComponent(window.location.href),'" po prostu nie ma \ud83d\ude25']}),";"]})}}}]);
+//# sourceMappingURL=84.d3a2d4d6.chunk.js.map
