@@ -12,6 +12,10 @@
     padding: 80px;
     color: black;
 
+    & h1 {
+        font-size: 24px;
+    }
+
     & .form-item {
         display: flex;
         flex-direction: column;

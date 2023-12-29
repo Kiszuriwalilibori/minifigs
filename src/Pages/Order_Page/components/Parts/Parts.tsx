@@ -4,10 +4,11 @@ import { after, isEmpty } from "lodash";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 
-import { NoParts, Part, LoadingIndicator } from "components";
+import { LoadingIndicator } from "components";
+import { Part, NoParts } from "../../components";
 import { PartsItem } from "types";
 import { isOffline } from "functions";
-import { useGetPartsQuery } from "../../api/partsApi";
+import { useGetPartsQuery } from "../../utils/partsApi";
 import { getSelectedMinifigNumber } from "reduxware/selectors";
 
 export const Parts = () => {

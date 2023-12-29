@@ -2,7 +2,7 @@ interface Props {
     message: string;
 }
 
-const Error = (props: Props): JSX.Element => {
+const Message = (props: Props): JSX.Element => {
     const { message } = props;
 
     return (
@@ -16,4 +16,4 @@ const Error = (props: Props): JSX.Element => {
     );
 };
 
-export default Error;
+export default Message;

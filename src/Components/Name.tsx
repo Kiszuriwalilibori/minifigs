@@ -1,9 +1,9 @@
 interface Props {
-    text: string;
+    name: string;
 }
 const Name = (props: Props) => {
-    const { text } = props;
+    const { name } = props;
 
-    return <p className="name">{text}</p>;
+    return <p className="name">{name}</p>;
 };
 export default Name;

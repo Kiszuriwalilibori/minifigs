@@ -2,16 +2,16 @@ import React from "react";
 import { ReactEventHandler } from "react";
 
 interface Props {
-    url: string;
+    imageURL: string;
     name: string;
     loadHandler?: ReactEventHandler<HTMLImageElement>;
 }
 const Picture = (props: Props) => {
-    const { url, name, loadHandler } = props;
+    const { imageURL, name, loadHandler } = props;
 
     return (
         <div className="picture">
-            <img src={url} alt={"Picture of " + name} onLoad={loadHandler} onError={loadHandler} />
+            <img src={imageURL} alt={name} onLoad={loadHandler} onError={loadHandler} />
         </div>
     );
 };

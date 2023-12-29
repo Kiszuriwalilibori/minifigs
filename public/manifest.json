@@ -6,6 +6,7 @@
     "display": "standalone",
     "scope": "./",
     "start_url": "./",
+    "description": "This app sends one minifig of Hatty Potter for free if you believe in fairy tales",
     "icons": [
         {
             "src": "assets/icons/icon-72x72.png",

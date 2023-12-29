@@ -1,9 +1,9 @@
-import { Minifigs } from "types";
+import { RootStateType } from "types";
 
-function draw(minifigs: Minifigs) {
+function draw(minifigs: RootStateType["draw"]["minifigs"]) {
     let initialLength = minifigs.length;
     if (initialLength <= 3) return minifigs;
-    const results = [] as Minifigs;
+    const results = [] as RootStateType["draw"]["minifigs"];
 
     for (let i = 0; i < 3; i++) {
         const index = Math.floor(Math.random() * minifigs.length);

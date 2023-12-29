@@ -17,7 +17,7 @@ export const Teaser = (props: Props) => {
         <div className="teaser">
             <p className="teaser__counter">{"Our stock is large, it will take some time. Besides, admin (shame on him) set 1s interval between requests. That is why it takes that long "}</p>
             <Counter />
-            <Picture url={teaser.set_img_url} name={teaser.name} />
+            <Picture imageURL={teaser.set_img_url} name={teaser.name} />
         </div>
     );
 };

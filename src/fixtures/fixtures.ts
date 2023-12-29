@@ -1,2 +1,1 @@
-const formID = "minifigs-ordr-form-id";
-export default formID;
+export const FORM_ID = "minifigs-ordr-form-id";

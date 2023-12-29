@@ -98,3 +98,4 @@ fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z w�
 
 wzięcie pierwszego figa zawsze jest bez obrazka? rzuca alt text zamiast obrazka
 zaskakująco duzo obrazków ma komunikat o błędzie w podglądzie sieci, z drugiej strony wszystkie sie wyświetlają.
+zastosować card do drugiego ekranu

@@ -18,10 +18,12 @@ $btn-height: 40px;
     &:hover {
         background-color: var(--button-hover-color);
     }
+    &:focus {
+        border: 2px solid var(--button-hover-color);
+    }
     &:disabled {
         cursor: default;
         background-color: var(--button-disabled-color);
-        opacity: 0.7;
     }
 }
 

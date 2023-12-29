@@ -1,80 +1,13 @@
-import { RegisterOptions, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
-import formID from "fixtures";
-import { createRedirect } from "functions";
-
-import { SendOrder, RedirectType } from "types";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { getSelectedMinifigNumber } from "reduxware/selectors";
 
-type Messages = { [key in keyof RegisterOptions]?: string };
-
-const messages: Messages = {
-    minLength: "Minimal length not reached, should be at least ",
-    maxLength: "Max length exceeded ",
-    required: "This field is required ",
-    pattern: "Text does not meet country pattern ",
-};
-
-type Fields = "firstName" | "surName" | "phone" | "email" | "dob" | "address" | "city" | "state" | "zip";
-
-type Validator = { [key in keyof RegisterOptions]?: any };
-type Validators = {
-    [key in Fields]?: Validator;
-};
-const crits = {
-    firstName: { minLength: 2, maxLength: 45, pattern: /^([ \u00c0-\u01ffa-zA-Z'\-])+$/, required: true },
-    surName: {
-        required: true,
-        minLength: 2,
-        maxLength: 100,
-        pattern: /^([ \u00c0-\u01ffa-zA-Z'\-])+$/,
-    },
-    phone: {
-        required: true,
-        pattern: /(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-8]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}/,
-    },
-    email: {
-        required: true,
-        pattern:
-            /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
-    },
-    dob: {
-        required: false,
-        pattern: /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/,
-    },
-    address: {
-        required: true,
-        pattern: /[A-Za-z0-9'\.\-\s\,]/,
-    },
-    city: {
-        required: true,
-        minLength: 2,
-        pattern: /^([ \u00c0-\u01ffa-zA-Z'\-])+$/,
-    },
-    state: {
-        required: true,
-        minLength: 2,
-        pattern: /^([ \u00c0-\u01ffa-zA-Z'\-])+$/,
-    },
-    zip: {
-        pattern: /^[0-9]{2}-[0-9]{3}/,
-        required: true,
-    },
-};
-const validators: Validators = {
-    firstName: { ...crits.firstName },
-    surName: { ...crits.surName },
-    phone: { ...crits.phone },
-    email: { ...crits.email },
-    dob: { ...crits.dob },
-    address: { ...crits.address },
-    city: { ...crits.city },
-    state: { ...crits.state },
-    zip: { ...crits.zip },
-};
+import { FORM_ID } from "fixtures";
+import { SendOrder } from "types";
+import { useMessage } from "hooks";
+import { crits, messages, validators } from "./utils";
 
 interface Props {
     sendOrder: SendOrder;
@@ -82,11 +15,9 @@ interface Props {
 export const OrderDetails = (props: Props) => {
     const { sendOrder } = props;
     const minifigSetNumber = useSelector(getSelectedMinifigNumber);
-
-    const history = useNavigate();
     const refForm = useRef<HTMLFormElement>(null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const redirect: RedirectType = useMemo(createRedirect(history), []);
+    const navigate = useNavigate();
+    const showMessage = useMessage();
 
     const {
         register,
@@ -97,17 +28,19 @@ export const OrderDetails = (props: Props) => {
     const onFormSubmit = () => {
         const pack = new FormData(refForm.current as HTMLFormElement);
         pack.append("setNumber", minifigSetNumber);
-        pack && sendOrder(redirect, pack);
+        pack && sendOrder(navigate, showMessage, pack);
     };
 
     return (
         <>
-            <form className="details" id={formID} onSubmit={handleSubmit(onFormSubmit)} ref={refForm}>
-                <h2 className="fromLeft">Shipping details</h2>
+            <form className="details" id={FORM_ID} onSubmit={handleSubmit(onFormSubmit)} ref={refForm}>
+                <h1 className="fromLeft">Shipping details</h1>
                 <div className="foo" id="foo"></div>
                 <div className="form-item extendable">
-                    <label className="required">Name</label>
-                    <input type="text" {...register("firstName", validators.firstName)} />
+                    <label className="required" htmlFor="firstName">
+                        Name
+                    </label>
+                    <input type="text" {...register("firstName", validators.firstName)} id="firstName" />
                     {errors.firstName && errors.firstName.type === "required" && <span>{messages.required}</span>}
                     {errors.firstName && errors.firstName.type === "minLength" && (
                         <span>
@@ -127,8 +60,10 @@ export const OrderDetails = (props: Props) => {
                 {/**Surname */}
 
                 <div className="form-item extendable">
-                    <label className="required">Surname</label>
-                    <input type="text" {...register("surName", validators.surName)} />
+                    <label className="required" htmlFor="Surname">
+                        Surname
+                    </label>
+                    <input id="Surname" type="text" {...register("surName", validators.surName)} />
                     {errors.surName && errors.surName.type === "required" && (
                         <span>
                             {messages.required}
@@ -153,8 +88,10 @@ export const OrderDetails = (props: Props) => {
                 {/**Phone */}
 
                 <div className="form-item full-width">
-                    <label className="required">Phone Number</label>
-                    <input placeholder="Mobile or regular Polish phone with country code like 048 669086566" type="text" {...register("phone", validators.phone)} />
+                    <label className="required" htmlFor="Phone">
+                        Phone Number
+                    </label>
+                    <input id="Phone" placeholder="Mobile or regular Polish phone with country code like 048 669086566" type="text" {...register("phone", validators.phone)} />
                     {errors.phone && errors.phone.type === "required" && (
                         <span>
                             {messages.required}
@@ -167,8 +104,10 @@ export const OrderDetails = (props: Props) => {
                 {/**Email */}
 
                 <div className="form-item full-width">
-                    <label className="required">Email</label>
-                    <input type="text" {...register("email", validators.email)} />
+                    <label className="required" htmlFor="email">
+                        Email
+                    </label>
+                    <input id="email" type="text" {...register("email", validators.email)} />
                     {errors.email && errors.email.type === "required" && (
                         <span>
                             {messages.required}
@@ -181,14 +120,16 @@ export const OrderDetails = (props: Props) => {
                 {/**Date of Birth */}
 
                 <div className="form-item full-width">
-                    <label>Date of Birth</label>
-                    <input placeholder="Date in yyyy-mm-dd or yyyy-m-dd format " type="text" {...register("dob", validators.dob)} />
+                    <label htmlFor="DoB">Date of Birth</label>
+                    <input id="DoB" placeholder="Date in yyyy-mm-dd or yyyy-m-dd format " type="text" {...register("dob", validators.dob)} />
                     {errors.dob && errors.dob.type === "pattern" && <span>{messages.pattern}</span>}
                 </div>
 
                 <div className="form-item full-width">
-                    <label className="required">Address</label>
-                    <input type="text" {...register("address", validators.address)} />
+                    <label className="required" htmlFor="address">
+                        Address
+                    </label>
+                    <input type="text" id="address" {...register("address", validators.address)} />
                     {errors.address && errors.address.type === "required" && (
                         <span>
                             {messages.required}
@@ -201,8 +142,10 @@ export const OrderDetails = (props: Props) => {
                 {/**City */}
 
                 <div className="form-item full-width">
-                    <label className="required">City</label>
-                    <input type="text" {...register("city", validators.city)} />
+                    <label className="required" htmlFor="city">
+                        City
+                    </label>
+                    <input type="text" id="city" {...register("city", validators.city)} />
                     {errors.city && errors.city.type === "required" && (
                         <span>
                             {messages.required}
@@ -221,8 +164,10 @@ export const OrderDetails = (props: Props) => {
                 {/**State */}
 
                 <div className="form-item">
-                    <label className="required">State</label>
-                    <input type="text" {...register("state", validators.state)} />
+                    <label className="required" htmlFor="state">
+                        State
+                    </label>
+                    <input type="text" id="state" {...register("state", validators.state)} />
                     {errors.state && errors.state.type === "required" && (
                         <span>
                             {messages.required}
@@ -241,8 +186,10 @@ export const OrderDetails = (props: Props) => {
                 {/**Zip Code */}
 
                 <div className="form-item">
-                    <label className="required">Zip Code</label>
-                    <input type="text" placeholder=" zip code in format xx-xxx" {...register("zip", validators.zip)} />
+                    <label className="required" htmlFor="ZipCode">
+                        Zip Code
+                    </label>
+                    <input id="ZipCode" type="text" placeholder=" zip code in format xx-xxx" {...register("zip", validators.zip)} />
                     {errors.zip && errors.zip.type === "required" && (
                         <span>
                             {messages.required}

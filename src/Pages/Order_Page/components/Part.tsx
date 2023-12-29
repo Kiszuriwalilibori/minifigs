@@ -10,7 +10,7 @@ const Part = (props: Props) => {
 
     return (
         <div className="part">
-            <img className="part__image" src={data.part.part_img_url} alt={"Picture of " + data.part.name} onLoad={loadHandler} onError={loadHandler}></img>
+            <img className="part__image" src={data.part.part_img_url} alt={data.part.name} onLoad={loadHandler} onError={loadHandler}></img>
             <div className="part__text-items">
                 <div className="part__item part__name">{data.part.name}</div>
                 <a className="part__item part__code" href={data.part.part_img_url} target="blank">

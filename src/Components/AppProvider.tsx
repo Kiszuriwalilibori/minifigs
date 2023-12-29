@@ -1,22 +1,16 @@
 import React, { ReactNode } from "react";
-import thunk from "redux-thunk";
+import storage from "redux-persist/lib/storage";
 
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { counterReducer, drawReducer, fetchReducer, runningReducer, selectedMinifigIdReducer, teasersReducer } from "reduxware/reducers";
 
-import fetchReducer from "reduxware/reducers/fetchReducer";
-import teasersReducer from "reduxware/reducers/teaserReducer";
-import drawReducer from "reduxware/reducers/drawReducer.ts";
-import runningReducer from "reduxware/reducers/isRunningSlice";
-import selectedMinifigIdReducer from "reduxware/reducers/chosenMinifigIdSlice";
-import counterReducer from "reduxware/reducers/counterReducer";
-
-import { partsApi } from "../api/partsApi";
+import { partsApi } from "../pages/Order_Page/utils/partsApi";
 import { PersistGate } from "redux-persist/integration/react";
+import { SnackbarProvider } from "notistack";
 
 const persistConfig = {
     key: "root",
@@ -33,6 +27,7 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     [partsApi.reducerPath]: partsApi.reducer,
 });
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
@@ -42,18 +37,24 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        })
-            .concat(thunk)
-            .concat(partsApi.middleware),
+        }).concat(partsApi.middleware),
 });
 let persistor = persistStore(store);
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <Router>{children}</Router>
-            </PersistGate>
-        </Provider>
+        <SnackbarProvider
+            maxSnack={3}
+            anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+            }}
+        >
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <Router>{children}</Router>
+                </PersistGate>
+            </Provider>
+        </SnackbarProvider>
     );
 };
 

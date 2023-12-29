@@ -3,7 +3,7 @@ import { Picture, Name } from "components";
 import { useSelector } from "react-redux";
 import { getSelectedMinifig } from "reduxware/selectors";
 
-export const Summary_Header = () => {
+export const SummaryHeader = () => {
     const fig = useSelector(getSelectedMinifig);
     const { name, num_parts: num, set_img_url: url } = fig as Minifig;
     const partsInfo = `There are ${num} parts in this minifig:`;
@@ -11,11 +11,13 @@ export const Summary_Header = () => {
     return (
         <div className="summary__main items">
             <h2 className="black fromLeft">Summary</h2>
-            <div className="image image--no-padding">
-                {name && url && <Picture name={name} url={url} />}
-                {name && <Name text={name} />}
+            <div className="minifigCard minifigCard--no-padding">
+                {name && url && <Picture name={name} imageURL={url} />}
+                {name && <Name name={name} />}
             </div>
             {num && <p>{partsInfo}</p>}
         </div>
     );
 };
+
+export default SummaryHeader;

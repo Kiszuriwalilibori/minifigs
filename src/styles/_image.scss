@@ -1,21 +1,67 @@
-.image {
+.minifigCard {
     display: grid;
     grid-row-gap: 20px;
     width: var(--image-size);
-    height: var(--image-size);
-    @include maxwidth768px {
-        width: var(--image-size-mobile);
-        height: var(--image-size);
-    }
-
-    background-color: var(--text-background);
+    height: var(--image-height);
+    box-sizing: border-box;
+    transition: color 0.4s;
     border-radius: 12px;
     border: none;
     outline: none;
     justify-items: center;
     padding: 30px var(--image-padding);
     font-family: inherit;
+    background-color: var(--text-background);
     cursor: pointer;
+
+    @media (max-width: 1024px) {
+        width: 29%;
+        height: auto;
+    }
+    @media (max-width: 768px) {
+        padding: 30px 1%;
+        width: var(--image-size);
+        height: var(--image-height);
+    }
+
+    @media (max-width: 500px) {
+        padding: 30px 1%;
+        width: 200px;
+        height: auto;
+    }
+
+    & .showDetails {
+        align-self: flex-end;
+        &:hover {
+            & button {
+                color: red;
+            }
+        }
+    }
+    & button {
+        color: var(--active-color);
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+        max-height: 200px;
+    }
+    & * {
+        font-family: inherit;
+        font-size: 16px;
+    }
+
+    // @include maxwidth768px {
+    //     width: var(--image-size-mobile);
+    //     height: var(--image-size);
+    // }
+
+    &:hover {
+        background-color: var(--text-background-hover);
+    }
+    & img {
+        mix-blend-mode: multiply;
+        filter: contrast(1);
+    }
 
     &--no-padding {
         padding: 30px 0;
