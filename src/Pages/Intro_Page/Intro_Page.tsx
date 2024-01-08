@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { useDispatchAction, useCheckApiKey, useBoolean } from "hooks";
+import { useDispatchAction, useCheckApiKey, useBoolean, useInitialFocus } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 import { getRunningStatus } from "reduxware/selectors";
 
@@ -20,9 +20,8 @@ export const Intro_Page = (props: Props) => {
     const isApiKeyAvailable = useCheckApiKey();
     const [shouldFetch, setShouldFetchTrue, setShouldFetchFalse, ,] = useBoolean(false);
     const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
-
-    const refButton = useRef<HTMLButtonElement>(null);
     const isRunning = useSelector(getRunningStatus);
+    const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
     useEffect(() => {
         if (!isRunning) {
@@ -30,7 +29,7 @@ export const Intro_Page = (props: Props) => {
             clearDraw();
             setRunningTrue();
         }
-        refButton.current && refButton.current.focus();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -53,7 +52,7 @@ export const Intro_Page = (props: Props) => {
         <main className="intro">
             <div className="intro__content-box">
                 <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={refButton} onClick={setShouldFetchTrue}>
+                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={/*refButton*/ buttonRef} onClick={setShouldFetchTrue}>
                     Lets'go
                 </BasicButton>
             </div>
