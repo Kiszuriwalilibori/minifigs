@@ -4,5 +4,6 @@ import fetchReducer from "./fetchReducer";
 import { runningReducer } from "./isRunningSlice";
 import selectedMinifigIdReducer from "./chosenMinifigIdSlice";
 import teasersReducer from "./teaserReducer";
+import pagesCountReducer from "./pagesCountReducer";
 
-export { counterReducer, drawReducer, fetchReducer, runningReducer, selectedMinifigIdReducer, teasersReducer };
+export { counterReducer, drawReducer, fetchReducer, pagesCountReducer, runningReducer, selectedMinifigIdReducer, teasersReducer };

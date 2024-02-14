@@ -1,10 +1,10 @@
 import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { getCounter } from "reduxware/selectors";
+
+import useGetProgressInfo from "../utils/useGetProgressInfo";
 
 const Counter = () => {
-    const counter = useSelector(getCounter, shallowEqual);
-    return <p className="teaser__counter">{"Exploring set number " + counter}</p>;
+    const progressInfo = useGetProgressInfo();
+    return <p className="teaser__counter">{progressInfo}</p>;
 };
 
 export default React.memo(Counter);

@@ -14,3 +14,4 @@ export const hideMessage = createAction("MESSAGE_HIDE");
 export const updateTeasers = createAction("TEASERS_UPDATE");
 export const updateCounter = createAction("COUNTER_UPDATE");
 export const resetTeasers = createAction("RESET_TEASERS");
+export const setPagesCount = createAction("PAGES_COUNT_SET");

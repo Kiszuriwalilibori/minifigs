@@ -26,12 +26,16 @@ const useFetchMinifigs = () => {
         let temporaryStorage: Minifigs = [];
         var nextURL: string;
         store.dispatch({ type: "LOADING_START" });
+        let sizeSent = false;
+        let counter = 0;
 
         function happyEnd() {
-            const trio = draw(temporaryStorage);
-            store.dispatch({ type: "LOADING_COMPLETE" });
-            setDraw(trio);
             navigate(Paths.select);
+            const trio = draw(temporaryStorage);
+            setDraw(trio);
+            setTimeout(() => {
+                store.dispatch({ type: "LOADING_COMPLETE" });
+            }, 1000);
         }
 
         function emptyEnd() {
@@ -58,14 +62,17 @@ const useFetchMinifigs = () => {
                 if (data) {
                     const resp = data;
                     if (resp && resp.results) {
+                        if (!sizeSent && resp.count) {
+                            sizeSent = true;
+                            store.dispatch({ type: "PAGES_COUNT_SET", payload: resp.count });
+                        }
                         const filteredMinifigs = filterMinifigs(resp.results, SUBJECT);
                         if (filteredMinifigs.length) {
                             temporaryStorage = temporaryStorage.concat(filteredMinifigs);
-                            filteredMinifigs.forEach(minifig => {
-                                setTimeout(() => {
-                                    store.dispatch({ type: "TEASERS_UPDATE", payload: minifig });
-                                }, 1000);
-                            });
+                            counter++;
+                            if (temporaryStorage[counter]) {
+                                store.dispatch({ type: "TEASERS_UPDATE", payload: temporaryStorage[counter] });
+                            }
                         }
 
                         if (resp.next) {
