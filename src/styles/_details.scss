@@ -12,6 +12,10 @@
     padding: 80px;
     color: black;
 
+    & h1 {
+        font-size: 24px;
+    }
+
     & .form-item {
         display: flex;
         flex-direction: column;
@@ -26,10 +30,11 @@
         }
         & span {
             background-color: var(--active-color);
-            position: absolute;
-            bottom: -22px;
-            padding: 4px;
+            padding: var(--error-padding);
             left: 0;
+            @include maxwidth768px {
+                max-width: calc(80% - var(--error-padding));
+            }
         }
 
         &.full-width {

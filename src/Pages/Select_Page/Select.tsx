@@ -6,8 +6,8 @@ import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatchAction } from "hooks";
-import { Minifig, SelectedMinifig } from "types/types";
-import { Image } from "components";
+import { Minifig, SelectedMinifig } from "types";
+import { MinifigCard } from "./components";
 import { BasicButton } from "components";
 import { Paths } from "routes/paths";
 
@@ -16,11 +16,11 @@ interface Props {
 }
 const Select = (props: Props) => {
     const { minifigs } = props;
-    const history = useNavigate();
     const [selected, setSelected] = useState<SelectedMinifig>({});
     const refImages = useRef<HTMLDivElement>(null);
-
+    const history = useNavigate();
     const { setSelectedMinifigId } = useDispatchAction();
+
     const selectMinifig = useCallback((minifig: SelectedMinifig) => {
         setSelected(minifig);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,30 +34,31 @@ const Select = (props: Props) => {
         []
     );
 
+    const handleConfirmSelection = useCallback(
+        (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            e.stopPropagation();
+            setSelectedMinifigId((selected as Minifig).set_num);
+            history(Paths.order);
+        },
+        [selected]
+    );
+
     return (
-        <div className="select">
+        <main className="select">
             <div className="select__content-box">
-                <h2>Choose your minifig</h2>
+                <h1>Choose your minifig</h1>
                 <div className="images" ref={refImages}>
                     {minifigs &&
                         minifigs.map(fig => {
                             const wasSelected = isEqual(fig, selected);
-                            return fig && <Image key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={wasSelected} loadHandler={onLoad} />;
+                            return fig && <MinifigCard key={uuid()} minifig={fig} clickHandler={selectMinifig} isSelected={wasSelected} loadHandler={onLoad} />;
                         })}
                 </div>
-                <BasicButton
-                    disabled={isEmpty(selected)}
-                    className="button uppercased"
-                    onClick={e => {
-                        e.stopPropagation();
-                        setSelectedMinifigId((selected as Minifig).set_num);
-                        history(Paths.order);
-                    }}
-                >
+                <BasicButton disabled={isEmpty(selected)} className="button uppercased" onClick={handleConfirmSelection}>
                     Proceed to shipment
                 </BasicButton>
             </div>
-        </div>
+        </main>
     );
 };
 

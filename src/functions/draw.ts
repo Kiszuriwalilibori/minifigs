@@ -1,11 +1,13 @@
-import { Minifigs } from "types";
+import { RootStateType } from "types";
 
-function draw(minifigs: Minifigs) {
+const NUMBER_OF_MINIFIGS = 3;
+
+function draw(minifigs: RootStateType["draw"]["minifigs"]) {
     let initialLength = minifigs.length;
-    if (initialLength <= 3) return minifigs;
-    const results = [] as Minifigs;
+    if (initialLength <= NUMBER_OF_MINIFIGS) return minifigs;
+    const results = [] as RootStateType["draw"]["minifigs"];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < NUMBER_OF_MINIFIGS; i++) {
         const index = Math.floor(Math.random() * minifigs.length);
         results.push(minifigs[index]);
         minifigs.splice(index, 1);

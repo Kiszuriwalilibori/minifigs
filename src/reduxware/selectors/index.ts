@@ -11,11 +11,14 @@ const getSelected = (ary: Minifigs, id: string) => {
     return fig;
 };
 
-const getNumber = (fig: Minifig) => fig.set_num;
+const getNumber = (fig: Minifig | undefined) => {
+    return fig && fig.set_num ? fig.set_num : undefined;
+};
 
 export const getSelectedMinifig = createSelector(getDraw, getSelectedMinifigId, getSelected);
 
-export const getSelectedMinifigNumber = createSelector(getSelectedMinifig as any, getNumber);
+export const getSelectedMinifigNumber = createSelector(getSelectedMinifig, getNumber);
 
 export { getRunningStatus } from "reduxware/reducers/isRunningSlice";
 export { getCounter } from "reduxware/reducers/counterReducer";
+export { getPagesCount } from "reduxware/reducers/pagesCountReducer";

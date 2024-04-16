@@ -17,5 +17,6 @@ const draw = createSlice({
     },
 });
 export default draw.reducer;
+export const drawReducer = draw.reducer;
 export const { setDraw, clearDraw } = draw.actions;
 export const getDraw = (state: { draw: { minifigs: Minifigs } }) => state.draw.minifigs;

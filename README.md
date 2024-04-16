@@ -92,9 +92,14 @@ precautions against trying to fetch anything when network is not available
 
 checking app key availablity prior anything else
 
+### 1.0.7
+
+simplified validation: ErrorMessage component imported from newly added "@hookform/error-message
+
 ### TODO
 
 fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
 
 wzięcie pierwszego figa zawsze jest bez obrazka? rzuca alt text zamiast obrazka
 zaskakująco duzo obrazków ma komunikat o błędzie w podglądzie sieci, z drugiej strony wszystkie sie wyświetlają.
+zastosować card do drugiego ekranu

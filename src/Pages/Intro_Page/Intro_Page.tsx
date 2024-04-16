@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useRef, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { useDispatchAction, useCheckApiKey } from "hooks";
-import { fetchData, createRedirect } from "functions";
-import { BasicButton, Error, LoadingIndicator, Teaser } from "components";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
+
+import { useDispatchAction, useCheckApiKey, useBoolean, useInitialFocus } from "hooks";
+import { BasicButton, Error, LoadingIndicator } from "components";
 import { getRunningStatus } from "reduxware/selectors";
 
-const initialURL = "https://rebrickable.com/api/v3/lego/minifigs/?key=" + process.env.REACT_APP_MINIFIGS_KEY;
+import Teaser from "./components/Teaser";
+import useFetchMinifigs from "hooks/useFetchMinifigs";
 
 interface Props {
     isLoading: boolean;
@@ -17,14 +16,12 @@ interface Props {
 
 export const Intro_Page = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
-    const history = useNavigate();
+    const fetchMinifigs = useFetchMinifigs();
     const isApiKeyAvailable = useCheckApiKey();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const redirect = useMemo(createRedirect(history), []);
+    const [shouldFetch, setShouldFetchTrue, setShouldFetchFalse, ,] = useBoolean(false);
     const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
-
-    const refButton = useRef<HTMLButtonElement>(null);
     const isRunning = useSelector(getRunningStatus);
+    const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
     useEffect(() => {
         if (!isRunning) {
@@ -32,7 +29,7 @@ export const Intro_Page = (props: Props) => {
             clearDraw();
             setRunningTrue();
         }
-        refButton.current && refButton.current.focus();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -41,27 +38,27 @@ export const Intro_Page = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+        if (shouldFetch) {
+            fetchMinifigs();
+            setShouldFetchFalse();
+        }
+        return () => {};
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shouldFetch]);
+
     if (!isApiKeyAvailable) return <Error message={errorMessage} handleClear={handleClear} />;
     return (
-        <>
-            <div className="intro">
-                <div className="intro__content-box">
-                    <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                    <BasicButton
-                        className="button uppercased"
-                        ref={refButton}
-                        onClick={e => {
-                            fetchData(initialURL, redirect);
-                        }}
-                    >
-                        Lets'go
-                    </BasicButton>
-                </div>
-                <Teaser />
+        <main className="intro">
+            <div className="intro__content-box">
+                <h1> LEGO MINIFIGS MYSTERY BOX</h1>
+                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={/*refButton*/ buttonRef} onClick={setShouldFetchTrue}>
+                    Lets'go
+                </BasicButton>
             </div>
-
+            <Teaser />
             {isLoading && <LoadingIndicator />}
             {isError && <Error message={errorMessage} handleClear={handleClear} />}
-        </>
+        </main>
     );
 };

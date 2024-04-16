@@ -15,5 +15,6 @@ const running = createSlice({
     },
 });
 export default running.reducer;
+export const runningReducer = running.reducer;
 export const { setRunningFalse, setRunningTrue } = running.actions;
 export const getRunningStatus = (state: { running: { isRunning: boolean } }) => state.running.isRunning;

@@ -6,7 +6,7 @@ export const initialState = {
     isError: false,
     isLoading: false,
     isFetched: false,
-    anyMessage: "",
+    message: "",
     isMessage: false,
 };
 
@@ -31,13 +31,13 @@ const fetchReducer = createReducer(initialState, builder => {
             state.errorMessage = "";
         })
         .addCase(showMessage, (state, action) => {
-            const { anyMessage } = action.payload;
+            const { message } = action.payload;
             state.isMessage = true;
-            if (action.payload) state.anyMessage = anyMessage;
+            if (action.payload) state.message = message;
         })
         .addCase(hideMessage, (state, action) => {
             state.isMessage = false;
-            state.anyMessage = "";
+            state.message = "";
         });
 });
 

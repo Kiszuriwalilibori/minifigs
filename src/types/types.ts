@@ -1,4 +1,4 @@
-import { RootStateType } from "components/AppProvider";
+import { AppDispatch, RootStateType } from "components/AppProvider";
 
 import { SendOrder } from "reduxware/thunks/sendOrder";
 
@@ -29,15 +29,8 @@ interface ShowError {
 
 interface ShowMessage {
     isMessage: boolean;
-    anyMessage: string;
+    message: string;
 }
-
-type HistoryCall = () => void;
-
-type RedirectType = {
-    [Item in PathKeys]: HistoryCall;
-};
-type SelectedDetails = any;
 
 interface PartsItem {
     part: {
@@ -52,9 +45,11 @@ interface Results {
     results: PartsItem[];
 }
 
-interface SendOrderArgs {
-    redirect: RedirectType;
-    data: any;
+interface FetchMinifigsResponse {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Minifig[];
 }
 
-export type { RootStateType, PathKeys, Category, Minifig, Minifigs, ShowError, ShowMessage, HistoryCall, RedirectType, SelectedDetails, SelectedMinifig, PartsItem, Results, SendOrderArgs, SendOrder };
+export type { AppDispatch, FetchMinifigsResponse, Category, Minifig, Minifigs, PathKeys, ShowError, ShowMessage, SelectedMinifig, PartsItem, Results, RootStateType, SendOrder };
