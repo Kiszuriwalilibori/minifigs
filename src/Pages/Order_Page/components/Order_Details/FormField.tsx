@@ -12,10 +12,11 @@ interface Props {
     name: string;
     register: UseFormRegister<FieldValues>;
     variant: "short" | "regular" | "extendable";
+    isRequired: boolean;
 }
 
 export const FormField = (props: Props) => {
-    const { errors, name, register, variant } = props;
+    const { errors, name, register, variant, isRequired } = props;
 
     let cls: string;
 
@@ -35,11 +36,11 @@ export const FormField = (props: Props) => {
 
     return (
         <div className={cls}>
-            <label className="required" htmlFor={name}>
+            <label className={isRequired ? "form-item__label required" : "form-item__label"} htmlFor={name}>
                 {labels[name]}
             </label>
             <input id={name} type="text" placeholder={placeholders[name] || ""} {...register(name, validators[name])} />
-            <ErrorMessage errors={errors} name={name} as="span" />
+            <ErrorMessage className="error-message" errors={errors} name={name} as="span" />
         </div>
     );
 };

@@ -1,1 +1,1 @@
-export const FORM_ID = "minifigs-ordr-form-id";
+export const FORM_ID = "minifigs-order-form-id";

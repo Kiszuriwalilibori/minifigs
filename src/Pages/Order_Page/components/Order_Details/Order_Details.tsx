@@ -40,23 +40,23 @@ export const OrderDetails = (props: Props) => {
                 <h1 className="fromLeft">Shipping details</h1>
                 <div className="foo" id="foo"></div>
 
-                <FormField errors={errors} variant="extendable" register={register} name="firstName" />
+                <FormField errors={errors} variant="extendable" register={register} name="firstName" isRequired />
 
-                <FormField errors={errors} variant="extendable" register={register} name="surName" />
+                <FormField errors={errors} variant="extendable" register={register} name="surName" isRequired />
 
-                <FormField errors={errors} variant="regular" register={register} name="phone" />
+                <FormField errors={errors} variant="regular" register={register} name="phone" isRequired />
 
-                <FormField errors={errors} variant="regular" register={register} name="email" />
+                <FormField errors={errors} variant="regular" register={register} name="email" isRequired />
 
-                <FormField errors={errors} variant="regular" register={register} name="dob" />
+                <FormField errors={errors} variant="regular" register={register} name="dob" isRequired={false} />
 
-                <FormField errors={errors} variant="regular" register={register} name="address" />
+                <FormField errors={errors} variant="regular" register={register} name="address" isRequired />
 
-                <FormField errors={errors} variant="regular" register={register} name="city" />
+                <FormField errors={errors} variant="regular" register={register} name="city" isRequired />
 
-                <FormField errors={errors} variant="short" register={register} name="state" />
+                <FormField errors={errors} variant="short" register={register} name="state" isRequired />
 
-                <FormField errors={errors} variant="short" register={register} name="zip" />
+                <FormField errors={errors} variant="short" register={register} name="zip" isRequired />
             </form>
         </>
     );

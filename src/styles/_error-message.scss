@@ -1,0 +1,8 @@
+.error-message {
+    background-color: var(--active-color);
+    padding: var(--error-padding);
+    left: 0;
+    @include maxwidth768px {
+        max-width: calc(80% - var(--error-padding));
+    }
+}

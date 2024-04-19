@@ -1,9 +1,9 @@
 import { isEmpty } from "lodash";
 
-import { Minifig } from "types";
-
-import { Picture } from "components";
 import Counter from "../Counter";
+
+import { Minifig } from "types";
+import { Picture } from "components";
 
 interface Props {
     teaser: Minifig;
