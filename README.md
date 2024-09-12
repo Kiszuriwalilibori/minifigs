@@ -96,6 +96,11 @@ checking app key availablity prior anything else
 
 simplified validation: ErrorMessage component imported from newly added "@hookform/error-message
 
+### 1.0.8
+
+useManageFetch wprowadzony dla poprawienia czytelności komponentu Intro_Page,
+poprawiony counter - teraz resetuje się przy powrocie z select
+
 ### TODO
 
 fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
