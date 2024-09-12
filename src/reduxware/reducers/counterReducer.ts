@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import { updateCounter } from "../actionCreators";
+import { updateCounter, resetCounter } from "../actionCreators";
 import { RootStateType } from "types";
 
 const initialState = {
@@ -8,9 +8,13 @@ const initialState = {
 };
 
 const counterReducer = createReducer(initialState, builder => {
-    builder.addCase(updateCounter, state => {
-        state.counter++;
-    });
+    builder
+        .addCase(updateCounter, state => {
+            state.counter++;
+        })
+        .addCase(resetCounter, state => {
+            state.counter = initialState.counter;
+        });
 });
 
 export default counterReducer;

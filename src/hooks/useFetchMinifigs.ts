@@ -10,7 +10,7 @@ import { useDispatchAction } from "./useDispatchAction";
 
 const useFetchMinifigs = () => {
     const navigate = useNavigate();
-    const { setDraw } = useDispatchAction();
+    const { setDraw, resetCounter } = useDispatchAction();
 
     const fetchMinifigs = () => {
         if (isOffline()) {
@@ -35,6 +35,7 @@ const useFetchMinifigs = () => {
             setDraw(trio);
             setTimeout(() => {
                 store.dispatch({ type: "LOADING_COMPLETE" });
+                resetCounter();
             }, 1000);
         }
 
@@ -44,6 +45,7 @@ const useFetchMinifigs = () => {
                 errorMessage: "Apparently dementors sucked all the figs",
             };
             store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
+            resetCounter();
         }
 
         function theEnd() {

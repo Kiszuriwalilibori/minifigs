@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { useDispatchAction, useCheckApiKey, useBoolean, useInitialFocus, useManageFetch } from "hooks";
+import { useDispatchAction, useCheckApiKey, useInitialFocus, useManageFetch } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 import { getRunningStatus } from "reduxware/selectors";
 

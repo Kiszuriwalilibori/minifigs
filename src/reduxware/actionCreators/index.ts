@@ -13,5 +13,6 @@ export const showMessage = createAction<ShowMessage>("MESSAGE_SHOW");
 export const hideMessage = createAction("MESSAGE_HIDE");
 export const updateTeasers = createAction("TEASERS_UPDATE");
 export const updateCounter = createAction("COUNTER_UPDATE");
+export const resetCounter = createAction("COUNTER_RESET");
 export const resetTeasers = createAction("RESET_TEASERS");
 export const setPagesCount = createAction("PAGES_COUNT_SET");
