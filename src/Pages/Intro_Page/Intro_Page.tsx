@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { useDispatchAction, useCheckApiKey, useBoolean, useInitialFocus } from "hooks";
+import { useDispatchAction, useCheckApiKey, useBoolean, useInitialFocus, useManageFetch } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 import { getRunningStatus } from "reduxware/selectors";
 
@@ -17,8 +17,8 @@ interface Props {
 export const Intro_Page = (props: Props) => {
     const { isError, isLoading, errorMessage } = props;
     const fetchMinifigs = useFetchMinifigs();
+    const startFetchMinifigs = useManageFetch(fetchMinifigs);
     const isApiKeyAvailable = useCheckApiKey();
-    const [shouldFetch, setShouldFetchTrue, setShouldFetchFalse, ,] = useBoolean(false);
     const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
     const isRunning = useSelector(getRunningStatus);
     const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
@@ -38,21 +38,12 @@ export const Intro_Page = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {
-        if (shouldFetch) {
-            fetchMinifigs();
-            setShouldFetchFalse();
-        }
-        return () => {};
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [shouldFetch]);
-
     if (!isApiKeyAvailable) return <Error message={errorMessage} handleClear={handleClear} />;
     return (
         <main className="intro">
             <div className="intro__content-box">
                 <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={/*refButton*/ buttonRef} onClick={setShouldFetchTrue}>
+                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={buttonRef} onClick={/*setShouldFetchTrue*/ startFetchMinifigs}>
                     Lets'go
                 </BasicButton>
             </div>

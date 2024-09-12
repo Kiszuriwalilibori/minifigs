@@ -6,5 +6,6 @@ import useMessage from "./useMessage";
 import { useDispatchAction } from "./useDispatchAction";
 import useInitialFocus from "./useInitialFocus";
 import useLocationChangeEffect from "./useLocationChangeEffect";
+import useManageFetch from "./useManageFetch";
 
-export { useBoolean, useCheckApiKey, useDebouncedCallback, useDispatchAction, useHandleConnectionStatus, useLocationChangeEffect, useInitialFocus, useMessage };
+export { useBoolean, useCheckApiKey, useDebouncedCallback, useDispatchAction, useHandleConnectionStatus, useLocationChangeEffect, useInitialFocus, useManageFetch, useMessage };
