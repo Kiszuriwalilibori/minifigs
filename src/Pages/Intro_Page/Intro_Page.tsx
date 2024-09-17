@@ -1,6 +1,4 @@
-import { useCallback } from "react";
-
-import { useDispatchAction, useCheckApiKey, useClearPersistsBeforeFirstRun, useInitialFocus, useManageFetch } from "hooks";
+import { useCheckApiKey, useClearPersistsBeforeFirstRun, useInitialFocus, useManageFetch } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 
 import Teaser from "./components/Teaser";
@@ -13,20 +11,15 @@ interface Props {
 }
 
 export const Intro_Page = (props: Props) => {
-    const { isError, isLoading, errorMessage } = props;
+    const { isLoading } = props;
+    console.log("isLoading", isLoading);
     const fetchMinifigs = useFetchMinifigs();
     const startFetchMinifigs = useManageFetch(fetchMinifigs);
     const isApiKeyAvailable = useCheckApiKey();
-    const { clearError } = useDispatchAction();
 
     const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
     useClearPersistsBeforeFirstRun();
-
-    const handleClear = useCallback(() => {
-        clearError();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     if (!isApiKeyAvailable) return null;
     return (
@@ -38,8 +31,9 @@ export const Intro_Page = (props: Props) => {
                 </BasicButton>
             </div>
             <Teaser />
+            {/* <LoadingIndicator /> */}
             {isLoading && <LoadingIndicator />}
-            {isError && <Error message={errorMessage} handleClear={handleClear} />}
+            <Error />
         </main>
     );
 };

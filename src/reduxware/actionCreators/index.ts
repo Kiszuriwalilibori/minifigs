@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { ShowError, ShowMessage, Minifig } from "types";
+import { ShowError, ShowMessage } from "types";
 
 export { setSelectedMinifigId, clearSelectedMinifigId } from "reduxware/reducers/chosenMinifigIdSlice";
 export { setRunningFalse, setRunningTrue } from "reduxware/reducers/isRunningSlice";

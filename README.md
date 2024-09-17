@@ -107,18 +107,4 @@ wprowadzone useClearPersists, grupuje logikę czyszczącą przed pierwszym obieg
 
 ### TODO
 
-Jest długa przerwa między naciśnięciem guzika na pierwszej stronie a pierwszym obrazkiem i jakimkolwiek komentarzem.
-
-fetchfunction albo przerobić na ReactQuery albo zrobić z niej osobny hook z własnym stanem, w każdym razie nie ma sensu żeby zajmował się jej wynikami redux
-
-wzięcie pierwszego figa zawsze jest bez obrazka? rzuca alt text zamiast obrazka
-zaskakująco duzo obrazków ma komunikat o błędzie w podglądzie sieci, z drugiej strony wszystkie sie wyświetlają.
-zastosować card do drugiego ekranu
-
-AppDispatch nie działa w jedynym przypadku kiedy miałoby zastapić Function
-
-WAI ARIA na stronie select wskazuje że w guziku nie pwinno być linku (nested links). Niestety nie można tego łatwo naprawić przy próbie zamiany BasicButtona na diva rozjeżdzają się wymiary nie wiedzieć czemu. Popróbować z Card?
-
-w dependencjach są podawane obiekty I funkcje.
-
-Usunąć stary pseudopersisit od details
+W summary cały kontent powinien się pokazywać naraz, tymczasem najpierw wskakuje napis summary i głowny obrazek.

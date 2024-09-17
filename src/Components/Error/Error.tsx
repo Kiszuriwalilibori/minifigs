@@ -4,11 +4,13 @@ import { BasicButton } from "components";
 
 interface Props {
     message: string;
+    isError: boolean;
     handleClear: () => void;
 }
 
-const Error = (props: Props): JSX.Element => {
-    const { message, handleClear } = props;
+export const Error = (props: Props) => {
+    const { message, handleClear, isError } = props;
+    if (!isError) return null;
 
     return ReactDOM.createPortal(
         <article className="error">
