@@ -1,9 +1,7 @@
-import { useCallback, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useCallback } from "react";
 
-import { useDispatchAction, useCheckApiKey, useInitialFocus, useManageFetch } from "hooks";
+import { useDispatchAction, useCheckApiKey, useClearPersistsBeforeFirstRun, useInitialFocus, useManageFetch } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
-import { getRunningStatus } from "reduxware/selectors";
 
 import Teaser from "./components/Teaser";
 import useFetchMinifigs from "hooks/useFetchMinifigs";
@@ -19,26 +17,18 @@ export const Intro_Page = (props: Props) => {
     const fetchMinifigs = useFetchMinifigs();
     const startFetchMinifigs = useManageFetch(fetchMinifigs);
     const isApiKeyAvailable = useCheckApiKey();
-    const { clearError, clearSelectedMinifigId, clearDraw, setRunningTrue } = useDispatchAction();
-    const isRunning = useSelector(getRunningStatus);
+    const { clearError } = useDispatchAction();
+
     const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
-    useEffect(() => {
-        if (!isRunning) {
-            clearSelectedMinifigId();
-            clearDraw();
-            setRunningTrue();
-        }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    useClearPersistsBeforeFirstRun();
 
     const handleClear = useCallback(() => {
         clearError();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (!isApiKeyAvailable) return <Error message={errorMessage} handleClear={handleClear} />;
+    if (!isApiKeyAvailable) return null;
     return (
         <main className="intro">
             <div className="intro__content-box">
