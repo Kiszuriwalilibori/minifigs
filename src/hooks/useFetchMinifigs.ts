@@ -8,6 +8,26 @@ import { FetchMinifigsResponse, Minifigs, ShowError } from "types";
 import { SUBJECT, START_URL } from "../config";
 import { useDispatchAction } from "./useDispatchAction";
 
+class TemporaryStorage {
+    store: Minifigs;
+    constructor(initialStore: Minifigs) {
+        this.store = initialStore;
+    }
+
+    get minifigs() {
+        return this.store;
+    }
+    isEmpty() {
+        return this.store.length ? false : true;
+    }
+    add(newItems: Minifigs) {
+        this.store = [...this.store, ...newItems];
+    }
+    getMinifigByIndex(index: number) {
+        return this.store[index];
+    }
+}
+
 const useFetchMinifigs = () => {
     const navigate = useNavigate();
     const { completeLoading, updateCounter, resetCounter, resetTeasers, setDraw, setPagesCount, showError, startLoading, updateTeasers } = useDispatchAction();
@@ -22,8 +42,8 @@ const useFetchMinifigs = () => {
 
             return;
         }
+        const storage = new TemporaryStorage([] as Minifigs);
 
-        let temporaryStorage: Minifigs = [];
         var nextURL: string;
         let sizeSent = false;
         let counter = 0;
@@ -31,8 +51,8 @@ const useFetchMinifigs = () => {
 
         function happyEnd() {
             navigate(Paths.select);
-            const trio = draw(temporaryStorage);
-            setDraw(trio);
+            const outcome = draw(storage.minifigs);
+            setDraw(outcome);
             setTimeout(() => {
                 completeLoading();
                 resetCounter();
@@ -50,7 +70,7 @@ const useFetchMinifigs = () => {
 
         function theEnd() {
             resetTeasers();
-            if (temporaryStorage.length === 0) {
+            if (storage.isEmpty()) {
                 emptyEnd();
             } else {
                 happyEnd();
@@ -66,14 +86,14 @@ const useFetchMinifigs = () => {
                     if (resp && resp.results) {
                         if (!sizeSent && resp.count) {
                             sizeSent = true;
-                            setPagesCount();
+                            setPagesCount(resp.count);
                         }
                         const filteredMinifigs = filterMinifigs(resp.results, SUBJECT);
                         if (filteredMinifigs.length) {
-                            temporaryStorage = temporaryStorage.concat(filteredMinifigs);
+                            storage.add(filteredMinifigs);
                             counter++;
-                            if (temporaryStorage[counter]) {
-                                updateTeasers(temporaryStorage[counter]);
+                            if (storage.getMinifigByIndex(counter)) {
+                                updateTeasers(storage.getMinifigByIndex(counter));
                             }
                         }
 

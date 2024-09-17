@@ -15,4 +15,4 @@ export const updateTeasers = createAction<Minifig>("TEASERS_UPDATE");
 export const updateCounter = createAction("COUNTER_UPDATE");
 export const resetCounter = createAction("COUNTER_RESET");
 export const resetTeasers = createAction("RESET_TEASERS");
-export const setPagesCount = createAction("PAGES_COUNT_SET");
+export const setPagesCount = createAction<number>("PAGES_COUNT_SET");
