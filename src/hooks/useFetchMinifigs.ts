@@ -10,7 +10,7 @@ import { useDispatchAction } from "./useDispatchAction";
 
 const useFetchMinifigs = () => {
     const navigate = useNavigate();
-    const { setDraw, resetCounter } = useDispatchAction();
+    const { completeLoading, updateCounter, resetCounter, resetTeasers, setDraw, setPagesCount, showError, startLoading, updateTeasers } = useDispatchAction();
 
     const fetchMinifigs = () => {
         if (isOffline()) {
@@ -18,23 +18,23 @@ const useFetchMinifigs = () => {
                 isError: true,
                 errorMessage: "No Internet available",
             };
-            store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
+            showError(showErrorPayload);
 
             return;
         }
 
         let temporaryStorage: Minifigs = [];
         var nextURL: string;
-        store.dispatch({ type: "LOADING_START" });
         let sizeSent = false;
         let counter = 0;
+        startLoading();
 
         function happyEnd() {
             navigate(Paths.select);
             const trio = draw(temporaryStorage);
             setDraw(trio);
             setTimeout(() => {
-                store.dispatch({ type: "LOADING_COMPLETE" });
+                completeLoading();
                 resetCounter();
             }, 1000);
         }
@@ -44,12 +44,12 @@ const useFetchMinifigs = () => {
                 isError: true,
                 errorMessage: "Apparently dementors sucked all the figs",
             };
-            store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
+            showError(showErrorPayload);
             resetCounter();
         }
 
         function theEnd() {
-            store.dispatch({ type: "RESET_TEASERS" });
+            resetTeasers();
             if (temporaryStorage.length === 0) {
                 emptyEnd();
             } else {
@@ -66,21 +66,21 @@ const useFetchMinifigs = () => {
                     if (resp && resp.results) {
                         if (!sizeSent && resp.count) {
                             sizeSent = true;
-                            store.dispatch({ type: "PAGES_COUNT_SET", payload: resp.count });
+                            setPagesCount();
                         }
                         const filteredMinifigs = filterMinifigs(resp.results, SUBJECT);
                         if (filteredMinifigs.length) {
                             temporaryStorage = temporaryStorage.concat(filteredMinifigs);
                             counter++;
                             if (temporaryStorage[counter]) {
-                                store.dispatch({ type: "TEASERS_UPDATE", payload: temporaryStorage[counter] });
+                                updateTeasers(temporaryStorage[counter]);
                             }
                         }
 
                         if (resp.next) {
                             nextURL = resp.next;
                             setTimeout(recursiveSingleFetch, 1000);
-                            store.dispatch({ type: "COUNTER_UPDATE" });
+                            updateCounter();
                         } else {
                             theEnd();
                         }

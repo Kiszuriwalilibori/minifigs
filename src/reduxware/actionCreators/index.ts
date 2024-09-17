@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { ShowError, ShowMessage } from "types";
+import { Minifig, ShowError, ShowMessage } from "types";
 
 export { setSelectedMinifigId, clearSelectedMinifigId } from "reduxware/reducers/chosenMinifigIdSlice";
 export { setRunningFalse, setRunningTrue } from "reduxware/reducers/isRunningSlice";
@@ -11,7 +11,7 @@ export const startLoading = createAction("LOADING_START");
 export const completeLoading = createAction("LOADING_COMPLETE");
 export const showMessage = createAction<ShowMessage>("MESSAGE_SHOW");
 export const hideMessage = createAction("MESSAGE_HIDE");
-export const updateTeasers = createAction("TEASERS_UPDATE");
+export const updateTeasers = createAction<Minifig>("TEASERS_UPDATE");
 export const updateCounter = createAction("COUNTER_UPDATE");
 export const resetCounter = createAction("COUNTER_RESET");
 export const resetTeasers = createAction("RESET_TEASERS");

@@ -12,7 +12,6 @@ interface Props {
 
 export const Intro_Page = (props: Props) => {
     const { isLoading } = props;
-    console.log("isLoading", isLoading);
     const fetchMinifigs = useFetchMinifigs();
     const startFetchMinifigs = useManageFetch(fetchMinifigs);
     const isApiKeyAvailable = useCheckApiKey();
