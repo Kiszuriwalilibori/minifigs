@@ -1,31 +1,11 @@
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import { filterMinifigs, draw, isOffline } from "functions";
+import { draw, filterMinifigs, isOffline, TemporaryStorage } from "functions";
 import { Paths } from "routes/paths";
-import { FetchMinifigsResponse, Minifigs, ShowError } from "types";
+import { FetchMinifigsResponse, Minifig, ShowError } from "types";
 import { SUBJECT, START_URL } from "../config";
 import { useDispatchAction } from "./useDispatchAction";
-
-class TemporaryStorage {
-    store: Minifigs;
-    constructor(initialStore: Minifigs) {
-        this.store = initialStore;
-    }
-
-    get minifigs() {
-        return this.store;
-    }
-    isEmpty() {
-        return this.store.length ? false : true;
-    }
-    add(newItems: Minifigs) {
-        this.store = [...this.store, ...newItems];
-    }
-    getMinifigByIndex(index: number) {
-        return this.store[index];
-    }
-}
 
 const createError = (message: string): ShowError => {
     return { isError: true, errorMessage: message };
@@ -40,7 +20,7 @@ const useFetchMinifigs = () => {
             showError(createError("No Internet connection"));
             return;
         }
-        const storage = new TemporaryStorage([] as Minifigs);
+        const storage = new TemporaryStorage<Minifig>([] as Minifig[]);
         var nextURL: string;
         let sizeSent = false;
         let counter = 0;
