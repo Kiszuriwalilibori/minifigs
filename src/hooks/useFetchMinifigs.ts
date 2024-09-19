@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import { store } from "components/AppProvider";
 import { filterMinifigs, draw, isOffline } from "functions";
 import { Paths } from "routes/paths";
 import { FetchMinifigsResponse, Minifigs, ShowError } from "types";
@@ -28,22 +27,20 @@ class TemporaryStorage {
     }
 }
 
+const createError = (message: string): ShowError => {
+    return { isError: true, errorMessage: message };
+};
+
 const useFetchMinifigs = () => {
     const navigate = useNavigate();
     const { completeLoading, updateCounter, resetCounter, resetTeasers, setDraw, setPagesCount, showError, startLoading, updateTeasers } = useDispatchAction();
 
     const fetchMinifigs = () => {
         if (isOffline()) {
-            const showErrorPayload: ShowError = {
-                isError: true,
-                errorMessage: "No Internet available",
-            };
-            showError(showErrorPayload);
-
+            showError(createError("No Internet connection"));
             return;
         }
         const storage = new TemporaryStorage([] as Minifigs);
-
         var nextURL: string;
         let sizeSent = false;
         let counter = 0;
@@ -60,11 +57,7 @@ const useFetchMinifigs = () => {
         }
 
         function emptyEnd() {
-            const showErrorPayload: ShowError = {
-                isError: true,
-                errorMessage: "Apparently dementors sucked all the figs",
-            };
-            showError(showErrorPayload);
+            showError(createError("Apparently dementors sucked all the figs"));
             resetCounter();
         }
 
@@ -115,8 +108,8 @@ const useFetchMinifigs = () => {
                 } else {
                     message = JSON.stringify(error);
                 }
-                const showErrorPayload: ShowError = { isError: true, errorMessage: message };
-                store.dispatch({ type: "ERROR_SHOW", payload: showErrorPayload });
+
+                showError(createError(message));
             }
         }
         recursiveSingleFetch();
