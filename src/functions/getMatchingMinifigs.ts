@@ -1,6 +1,6 @@
 import { Minifigs } from "types";
 
-const filterMinifigs = (minifigs: Minifigs, str: string) => {
+const getMatchingMinifigs = (minifigs: Minifigs, str: string) => {
     const result = minifigs.filter(item => {
         return item.name.toLowerCase().includes(str.toLowerCase()) && item.set_img_url;
     });
@@ -8,4 +8,4 @@ const filterMinifigs = (minifigs: Minifigs, str: string) => {
     return result;
 };
 
-export default filterMinifigs;
+export default getMatchingMinifigs;

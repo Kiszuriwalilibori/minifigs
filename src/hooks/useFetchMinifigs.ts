@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import { draw, filterMinifigs, isOffline, TemporaryStorage } from "functions";
+import { draw, getMatchingMinifigs, isOffline, TemporaryStorage } from "functions";
 import { Paths } from "routes/paths";
 import { FetchMinifigsResponse, Minifig, ShowError } from "types";
 import { SUBJECT, START_URL } from "../config";
@@ -24,6 +24,7 @@ const useFetchMinifigs = () => {
         var nextURL: string;
         let sizeSent = false;
         let counter = 0;
+
         startLoading();
 
         function happyEnd() {
@@ -61,7 +62,7 @@ const useFetchMinifigs = () => {
                             sizeSent = true;
                             setPagesCount(resp.count);
                         }
-                        const filteredMinifigs = filterMinifigs(resp.results, SUBJECT);
+                        const filteredMinifigs = getMatchingMinifigs(resp.results, SUBJECT);
                         if (filteredMinifigs.length) {
                             storage.add(filteredMinifigs);
                             counter++;
@@ -73,7 +74,7 @@ const useFetchMinifigs = () => {
                         if (resp.next) {
                             nextURL = resp.next;
                             setTimeout(recursiveSingleFetch, 1000);
-                            updateCounter();
+                            updateCounter(counter);
                         } else {
                             theEnd();
                         }

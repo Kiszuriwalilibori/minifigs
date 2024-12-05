@@ -8,5 +8,6 @@ import useInitialFocus from "./useInitialFocus";
 import useLocationChangeEffect from "./useLocationChangeEffect";
 import useManageFetch from "./useManageFetch";
 import useClearPersistsBeforeFirstRun from "./useClearPersistsBeforeFirstRun";
+import useFetchFigs from "./useFetchFigs/useFetchFigs";
 
-export { useBoolean, useCheckApiKey, useClearPersistsBeforeFirstRun, useDebouncedCallback, useDispatchAction, useHandleConnectionStatus, useLocationChangeEffect, useInitialFocus, useManageFetch, useMessage };
+export { useBoolean, useCheckApiKey, useClearPersistsBeforeFirstRun, useDebouncedCallback, useDispatchAction, useFetchFigs, useHandleConnectionStatus, useLocationChangeEffect, useInitialFocus, useManageFetch, useMessage };

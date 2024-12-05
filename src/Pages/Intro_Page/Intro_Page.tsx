@@ -1,4 +1,4 @@
-import { useCheckApiKey, useClearPersistsBeforeFirstRun, useInitialFocus, useManageFetch } from "hooks";
+import { useBoolean, useCheckApiKey, useClearPersistsBeforeFirstRun, useFetchFigs, useInitialFocus, useManageFetch } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 
 import Teaser from "./components/Teaser";
@@ -12,9 +12,10 @@ interface Props {
 
 export const Intro_Page = (props: Props) => {
     const { isLoading } = props;
-    const fetchMinifigs = useFetchMinifigs();
-    const startFetchMinifigs = useManageFetch(fetchMinifigs);
+    const [shouldFetch, setShouldFetchTrue, setShouldFetchFalse, ,] = useBoolean(false);
+
     const isApiKeyAvailable = useCheckApiKey();
+    useFetchFigs(shouldFetch);
 
     const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
@@ -25,12 +26,11 @@ export const Intro_Page = (props: Props) => {
         <main className="intro">
             <div className="intro__content-box">
                 <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={buttonRef} onClick={/*setShouldFetchTrue*/ startFetchMinifigs}>
+                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={buttonRef} onClick={setShouldFetchTrue}>
                     Lets'go
                 </BasicButton>
             </div>
             <Teaser />
-            {/* <LoadingIndicator /> */}
             {isLoading && <LoadingIndicator />}
             <Error />
         </main>

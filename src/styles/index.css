@@ -356,6 +356,10 @@ a {
   cursor: default;
   background-color: var(--button-disabled-color);
 }
+.button-cancel {
+  background-color: orange;
+  color: black;
+}
 
 .button--alarm {
   height: 40px;
