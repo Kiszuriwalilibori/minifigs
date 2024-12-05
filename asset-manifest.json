@@ -1,26 +1,30 @@
 {
   "files": {
-    "main.css": "/minifigs/static/css/main.aea8711f.css",
-    "main.js": "/minifigs/static/js/main.7422f3de.js",
-    "static/js/731.0b1654f7.chunk.js": "/minifigs/static/js/731.0b1654f7.chunk.js",
-    "static/js/724.63a81e52.chunk.js": "/minifigs/static/js/724.63a81e52.chunk.js",
+    "main.css": "/minifigs/static/css/main.30bfefe1.css",
+    "main.js": "/minifigs/static/js/main.de6eff73.js",
+    "static/js/731.9099db13.chunk.js": "/minifigs/static/js/731.9099db13.chunk.js",
+    "static/js/724.f9a6d083.chunk.js": "/minifigs/static/js/724.f9a6d083.chunk.js",
     "static/js/84.d3a2d4d6.chunk.js": "/minifigs/static/js/84.d3a2d4d6.chunk.js",
+    "static/js/362.b862204f.chunk.js": "/minifigs/static/js/362.b862204f.chunk.js",
+    "static/js/23.300d2614.chunk.js": "/minifigs/static/js/23.300d2614.chunk.js",
     "static/js/465.04e9ad10.chunk.js": "/minifigs/static/js/465.04e9ad10.chunk.js",
     "static/js/656.5e06bd34.chunk.js": "/minifigs/static/js/656.5e06bd34.chunk.js",
     "service-worker.js": "/minifigs/service-worker.js",
     "static/media/gordon.ttf": "/minifigs/static/media/gordon.e1472f82d4276d60ef8e.ttf",
     "static/media/gordon.woff2": "/minifigs/static/media/gordon.c6cb30ef6a14c0cf635d.woff2",
     "index.html": "/minifigs/index.html",
-    "main.aea8711f.css.map": "/minifigs/static/css/main.aea8711f.css.map",
-    "main.7422f3de.js.map": "/minifigs/static/js/main.7422f3de.js.map",
-    "731.0b1654f7.chunk.js.map": "/minifigs/static/js/731.0b1654f7.chunk.js.map",
-    "724.63a81e52.chunk.js.map": "/minifigs/static/js/724.63a81e52.chunk.js.map",
+    "main.30bfefe1.css.map": "/minifigs/static/css/main.30bfefe1.css.map",
+    "main.de6eff73.js.map": "/minifigs/static/js/main.de6eff73.js.map",
+    "731.9099db13.chunk.js.map": "/minifigs/static/js/731.9099db13.chunk.js.map",
+    "724.f9a6d083.chunk.js.map": "/minifigs/static/js/724.f9a6d083.chunk.js.map",
     "84.d3a2d4d6.chunk.js.map": "/minifigs/static/js/84.d3a2d4d6.chunk.js.map",
+    "362.b862204f.chunk.js.map": "/minifigs/static/js/362.b862204f.chunk.js.map",
+    "23.300d2614.chunk.js.map": "/minifigs/static/js/23.300d2614.chunk.js.map",
     "465.04e9ad10.chunk.js.map": "/minifigs/static/js/465.04e9ad10.chunk.js.map",
     "656.5e06bd34.chunk.js.map": "/minifigs/static/js/656.5e06bd34.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aea8711f.css",
-    "static/js/main.7422f3de.js"
+    "static/css/main.30bfefe1.css",
+    "static/js/main.de6eff73.js"
   ]
 }
