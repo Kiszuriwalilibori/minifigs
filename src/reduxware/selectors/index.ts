@@ -22,3 +22,4 @@ export const getSelectedMinifigNumber = createSelector(getSelectedMinifig, getNu
 export { getRunningStatus } from "reduxware/reducers/isRunningSlice";
 export { getCounter } from "reduxware/reducers/counterReducer";
 export { getPagesCount } from "reduxware/reducers/pagesCountReducer";
+export { getIsLoading } from "reduxware/reducers/fetchReducer";

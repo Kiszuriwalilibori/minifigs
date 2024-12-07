@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useGetWorker from "./useGetWorker";
 import { useNavigate } from "react-router-dom";
 import { useDispatchAction } from "hooks";
-import { ShowError } from "types";
+import { Action, ShowError } from "types";
 import { draw, isOffline } from "functions";
 import { Paths } from "routes/paths";
 
@@ -10,14 +10,24 @@ const createError = (message: string): ShowError => {
     return { isError: true, errorMessage: message };
 };
 
-export const useFetchFigs = (shouldFetch: boolean) => {
+export const useFetchFigs = (action: Action) => {
     const navigate = useNavigate();
     const { completeLoading, updateCounter, resetCounter, resetTeasers, setDraw, setPagesCount, showError, startLoading, updateTeasers } = useDispatchAction();
-
     const worker = useGetWorker();
     useEffect(() => {
-        if (!shouldFetch) {
+        if (!action) {
             return;
+        }
+        if (action === "stop") {
+            resetTeasers();
+            resetCounter();
+            completeLoading();
+            worker.terminate();
+            return;
+        }
+
+        if (action === "start") {
+            startLoading();
         }
 
         if (isOffline()) {
@@ -25,15 +35,13 @@ export const useFetchFigs = (shouldFetch: boolean) => {
             return; // todo powinno przekazywać sygnał do workera, przecież może się wydarzyć w każdej chwili
         }
         if (window.Worker) {
-            startLoading();
             worker.postMessage(null);
             worker.onerror = function (e) {
                 completeLoading();
-                showError(createError("fetchBooksWorker wywołał błąd: " + e.message));
+                showError(createError("fetchFigsWorker wywołał błąd: " + e.message));
                 worker.terminate();
             };
             worker.onmessage = (e: MessageEvent<any>) => {
-                console.log(e.data);
                 if (e.data.counter) {
                     updateCounter(e.data.counter);
                 }
@@ -65,6 +73,6 @@ export const useFetchFigs = (shouldFetch: boolean) => {
         return () => {
             worker.terminate();
         };
-    }, [shouldFetch]);
+    }, [/*shouldFetch, cancel*/ action]);
 };
 export default useFetchFigs;

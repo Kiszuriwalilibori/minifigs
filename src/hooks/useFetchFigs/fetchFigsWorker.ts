@@ -1,6 +1,5 @@
 import axios from "axios";
-
-import { draw, getMatchingMinifigs, TemporaryStorage } from "functions";
+import { getMatchingMinifigs, TemporaryStorage } from "functions";
 import { FetchMinifigsResponse, Minifig, ShowError } from "types";
 import { SUBJECT, START_URL } from "../../config";
 
@@ -8,13 +7,6 @@ import { SUBJECT, START_URL } from "../../config";
 const createError = (message: string): ShowError => {
     return { isError: true, errorMessage: message };
 };
-// interface Result {
-//     pagesCount?: number;
-//     errors?: ShowError[];
-//     counter?: number;
-//     teaser?: Minifig;
-//     storage?: Minifig[];
-// }
 
 self.onmessage = function (event) {
     const storage = new TemporaryStorage<Minifig>([] as Minifig[]);

@@ -1,8 +1,10 @@
-import { useBoolean, useCheckApiKey, useClearPersistsBeforeFirstRun, useFetchFigs, useInitialFocus, useManageFetch } from "hooks";
+import { useCheckApiKey, useClearPersistsBeforeFirstRun, useFetchFigs, useInitialFocus } from "hooks";
 import { BasicButton, Error, LoadingIndicator } from "components";
 
 import Teaser from "./components/Teaser";
-import useFetchMinifigs from "hooks/useFetchMinifigs";
+
+import { useState } from "react";
+import { Action } from "types/index";
 
 interface Props {
     isLoading: boolean;
@@ -12,26 +14,28 @@ interface Props {
 
 export const Intro_Page = (props: Props) => {
     const { isLoading } = props;
-    const [shouldFetch, setShouldFetchTrue, setShouldFetchFalse, ,] = useBoolean(false);
-
+    const [action, setAction] = useState<Action>(""); //todo enhanced state
     const isApiKeyAvailable = useCheckApiKey();
-    useFetchFigs(shouldFetch);
-
     const { initialFocus: buttonRef } = useInitialFocus<HTMLButtonElement>();
 
     useClearPersistsBeforeFirstRun();
+    useFetchFigs(action);
 
     if (!isApiKeyAvailable) return null;
     return (
         <main className="intro">
             <div className="intro__content-box">
                 <h1> LEGO MINIFIGS MYSTERY BOX</h1>
-                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={buttonRef} onClick={setShouldFetchTrue}>
+                <BasicButton disabled={isLoading} className="button uppercased" aria-label="Fetch data of minifigs" ref={buttonRef} onClick={() => setAction("start")}>
                     Lets'go
                 </BasicButton>
+                <BasicButton disabled={!isLoading} className="button button-cancel uppercased" aria-label="cancels fetching minifigs" onClick={() => setAction("stop")}>
+                    Cancel
+                </BasicButton>
             </div>
-            <Teaser />
             {isLoading && <LoadingIndicator />}
+            <Teaser />
+
             <Error />
         </main>
     );

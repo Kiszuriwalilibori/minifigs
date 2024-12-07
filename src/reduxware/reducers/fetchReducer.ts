@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { showError, clearError, startLoading, completeLoading, showMessage, hideMessage } from "../actionCreators";
+import { RootStateType } from "components/AppProvider";
 
 export const initialState = {
     errorMessage: "",
@@ -42,3 +43,5 @@ const fetchReducer = createReducer(initialState, builder => {
 });
 
 export default fetchReducer;
+
+export const getIsLoading = (state: RootStateType) => state.fetch.isLoading;

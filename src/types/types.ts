@@ -51,5 +51,6 @@ interface FetchMinifigsResponse {
     previous: string | null;
     results: Minifig[];
 }
+type Action = "start" | "stop" | "";
 
-export type { AppDispatch, FetchMinifigsResponse, Category, Minifig, Minifigs, PathKeys, ShowError, ShowMessage, SelectedMinifig, PartsItem, Results, RootStateType, SendOrder };
+export type { Action, AppDispatch, FetchMinifigsResponse, Category, Minifig, Minifigs, PathKeys, ShowError, ShowMessage, SelectedMinifig, PartsItem, Results, RootStateType, SendOrder };

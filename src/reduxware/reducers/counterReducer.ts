@@ -11,7 +11,6 @@ const counterReducer = createReducer(initialState, builder => {
     builder
         .addCase(updateCounter, (state, action) => {
             if (action.payload) state.counter = action.payload;
-            // state.counter++;
         })
         .addCase(resetCounter, state => {
             state.counter = initialState.counter;

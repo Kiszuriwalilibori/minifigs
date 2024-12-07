@@ -1,7 +1,9 @@
-import ReactDOM from "react-dom";
+import { shallowEqual, useSelector } from "react-redux";
+import { getIsLoading } from "reduxware/selectors";
 
 const LoadingIndicator = () => {
-    return ReactDOM.createPortal(<article className="loading">Loading&#8230;</article>, document.body);
+    const isLoading = useSelector(getIsLoading, shallowEqual);
+    return <div className="loader"></div>;
 };
 
 export default LoadingIndicator;
