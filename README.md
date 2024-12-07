@@ -105,6 +105,9 @@ poprawiony counter - teraz resetuje się przy powrocie z select
 
 wprowadzone useClearPersists, grupuje logikę czyszczącą przed pierwszym obiegiem
 
+### 1.1.0
+
 ### TODO
 
 W summary cały kontent powinien się pokazywać naraz, tymczasem najpierw wskakuje napis summary i głowny obrazek.
+Na stronie select, przy wolnej sieci, przydałyby się tymczasowe obrazy figów, bo jest wielka dziura pośrodku
