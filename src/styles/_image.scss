@@ -50,11 +50,6 @@
         font-size: 16px;
     }
 
-    // @include maxwidth768px {
-    //     width: var(--image-size-mobile);
-    //     height: var(--image-size);
-    // }
-
     &:hover {
         background-color: var(--text-background-hover);
     }

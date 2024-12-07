@@ -73,6 +73,6 @@ export const useFetchFigs = (action: Action) => {
         return () => {
             worker.terminate();
         };
-    }, [/*shouldFetch, cancel*/ action]);
+    }, [action]);
 };
 export default useFetchFigs;
