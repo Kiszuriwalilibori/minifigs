@@ -56,7 +56,6 @@ export const useFetchFigs = (action: Action) => {
                     showError(e.data.error);
                 }
                 if (e.data.store) {
-                    console.log(e.data);
                     if (e.data.store.length) {
                         setDraw(draw(e.data.store));
                         navigate(Paths.select);
