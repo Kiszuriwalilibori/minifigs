@@ -13,7 +13,7 @@ const createError = (message: string): ShowError => {
 export const useFetchFigs = (action: Action) => {
     const navigate = useNavigate();
     const { completeLoading, updateCounter, resetCounter, resetTeasers, setDraw, setPagesCount, showError, startLoading, updateTeasers } = useDispatchAction();
-    const worker = useGetWorker();
+    const worker = useGetWorker(action);
     useEffect(() => {
         if (!action) {
             return;
@@ -22,7 +22,7 @@ export const useFetchFigs = (action: Action) => {
             resetTeasers();
             resetCounter();
             completeLoading();
-            worker.terminate();
+            worker && worker.terminate();
             return;
         }
 
@@ -31,10 +31,11 @@ export const useFetchFigs = (action: Action) => {
         }
 
         if (isOffline()) {
-            showError(createError("No Internet connection"));
-            return; // todo powinno przekazywać sygnał do workera, przecież może się wydarzyć w każdej chwili
+            showError(createError("No internet connection.Figs, if any, are most likely incomplete"));
+
+            return;
         }
-        if (window.Worker) {
+        if (window.Worker && worker) {
             worker.postMessage(null);
             worker.onerror = function (e) {
                 completeLoading();
@@ -55,6 +56,7 @@ export const useFetchFigs = (action: Action) => {
                     showError(e.data.error);
                 }
                 if (e.data.store) {
+                    console.log(e.data);
                     if (e.data.store.length) {
                         setDraw(draw(e.data.store));
                         navigate(Paths.select);
@@ -71,7 +73,7 @@ export const useFetchFigs = (action: Action) => {
             };
         }
         return () => {
-            worker.terminate();
+            worker && worker.terminate();
         };
     }, [action]);
 };

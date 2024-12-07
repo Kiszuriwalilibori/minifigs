@@ -1,9 +1,10 @@
 import { useMemo } from "react";
+import { Action } from "types";
 
-export const useGetMemoizedFetchBooksWorker = () => {
+export const useGetWorker = (action: Action) => {
     const getMemoizedFetchBooksWorker: Worker = new Worker(new URL("./fetchFigsWorker.ts", import.meta.url));
     // const getMemoizedFetchBooksWorker: Worker = useMemo(() => new Worker(new URL("./fetchFigsWorker.ts", import.meta.url)), []);
-    return getMemoizedFetchBooksWorker;
+    return action ? getMemoizedFetchBooksWorker : null;
 };
 
-export default useGetMemoizedFetchBooksWorker;
+export default useGetWorker;

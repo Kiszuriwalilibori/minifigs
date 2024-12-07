@@ -14,6 +14,7 @@ self.onmessage = function (event) {
     let sizeSent = false;
     let counter = 0;
     let teaser: Minifig = {} as Minifig;
+
     async function recursiveFetch() {
         var fullPath = nextURL || START_URL;
         try {
@@ -50,6 +51,7 @@ self.onmessage = function (event) {
         } catch (error) {
             const message = axios.isAxiosError(error) ? error.message : JSON.stringify(error);
             self.postMessage({ error: createError(message) });
+            self.postMessage(storage);
         }
     }
     recursiveFetch();

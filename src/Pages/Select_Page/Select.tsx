@@ -33,7 +33,7 @@ const Select = (props: Props) => {
         }),
         []
     );
-
+    //todo powyższe z jednej strony sprawia, że ładują sie wszytkie naraz, z drugiej strony jak jest wolne łacze to widać tylko nagłówek i stopkę bez obrazków żadnych za to długo. Jakiś fallback image
     const handleConfirmSelection = useCallback(
         (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.stopPropagation();
